@@ -1,0 +1,386 @@
+[
+  {
+    "component": "asyncio",
+    "fault": "none",
+    "id": "corpus-asyncio-01",
+    "manifest": "corpus/corpus-asyncio-01.json",
+    "max_workers": null,
+    "size": 2
+  },
+  {
+    "component": "asyncio",
+    "fault": "timeout",
+    "id": "corpus-asyncio-02",
+    "manifest": "corpus/corpus-asyncio-02.json",
+    "max_workers": null,
+    "size": 3
+  },
+  {
+    "component": "asyncio",
+    "fault": "cancel",
+    "id": "corpus-asyncio-03",
+    "manifest": "corpus/corpus-asyncio-03.json",
+    "max_workers": null,
+    "size": 4
+  },
+  {
+    "component": "asyncio",
+    "fault": "error",
+    "id": "corpus-asyncio-04",
+    "manifest": "corpus/corpus-asyncio-04.json",
+    "max_workers": null,
+    "size": 6
+  },
+  {
+    "component": "asyncio",
+    "fault": "reorder",
+    "id": "corpus-asyncio-05",
+    "manifest": "corpus/corpus-asyncio-05.json",
+    "max_workers": null,
+    "size": 8
+  },
+  {
+    "component": "asyncio",
+    "fault": "mixed",
+    "id": "corpus-asyncio-06",
+    "manifest": "corpus/corpus-asyncio-06.json",
+    "max_workers": null,
+    "size": 2
+  },
+  {
+    "component": "asyncio",
+    "fault": "none",
+    "id": "corpus-asyncio-07",
+    "manifest": "corpus/corpus-asyncio-07.json",
+    "max_workers": null,
+    "size": 3
+  },
+  {
+    "component": "asyncio",
+    "fault": "timeout",
+    "id": "corpus-asyncio-08",
+    "manifest": "corpus/corpus-asyncio-08.json",
+    "max_workers": null,
+    "size": 4
+  },
+  {
+    "component": "asyncio",
+    "fault": "cancel",
+    "id": "corpus-asyncio-09",
+    "manifest": "corpus/corpus-asyncio-09.json",
+    "max_workers": null,
+    "size": 6
+  },
+  {
+    "component": "asyncio",
+    "fault": "error",
+    "id": "corpus-asyncio-10",
+    "manifest": "corpus/corpus-asyncio-10.json",
+    "max_workers": null,
+    "size": 8
+  },
+  {
+    "component": "asyncio",
+    "fault": "reorder",
+    "id": "corpus-asyncio-11",
+    "manifest": "corpus/corpus-asyncio-11.json",
+    "max_workers": null,
+    "size": 2
+  },
+  {
+    "component": "asyncio",
+    "fault": "mixed",
+    "id": "corpus-asyncio-12",
+    "manifest": "corpus/corpus-asyncio-12.json",
+    "max_workers": null,
+    "size": 3
+  },
+  {
+    "component": "asyncio",
+    "fault": "none",
+    "id": "corpus-asyncio-13",
+    "manifest": "corpus/corpus-asyncio-13.json",
+    "max_workers": null,
+    "size": 4
+  },
+  {
+    "component": "asyncio",
+    "fault": "timeout",
+    "id": "corpus-asyncio-14",
+    "manifest": "corpus/corpus-asyncio-14.json",
+    "max_workers": null,
+    "size": 6
+  },
+  {
+    "component": "asyncio",
+    "fault": "cancel",
+    "id": "corpus-asyncio-15",
+    "manifest": "corpus/corpus-asyncio-15.json",
+    "max_workers": null,
+    "size": 8
+  },
+  {
+    "component": "asyncio",
+    "fault": "error",
+    "id": "corpus-asyncio-16",
+    "manifest": "corpus/corpus-asyncio-16.json",
+    "max_workers": null,
+    "size": 2
+  },
+  {
+    "component": "asyncio",
+    "fault": "reorder",
+    "id": "corpus-asyncio-17",
+    "manifest": "corpus/corpus-asyncio-17.json",
+    "max_workers": null,
+    "size": 3
+  },
+  {
+    "component": "asyncio",
+    "fault": "mixed",
+    "id": "corpus-asyncio-18",
+    "manifest": "corpus/corpus-asyncio-18.json",
+    "max_workers": null,
+    "size": 4
+  },
+  {
+    "component": "asyncio",
+    "fault": "none",
+    "id": "corpus-asyncio-19",
+    "manifest": "corpus/corpus-asyncio-19.json",
+    "max_workers": null,
+    "size": 6
+  },
+  {
+    "component": "asyncio",
+    "fault": "timeout",
+    "id": "corpus-asyncio-20",
+    "manifest": "corpus/corpus-asyncio-20.json",
+    "max_workers": null,
+    "size": 8
+  },
+  {
+    "component": "asyncio",
+    "fault": "cancel",
+    "id": "corpus-asyncio-21",
+    "manifest": "corpus/corpus-asyncio-21.json",
+    "max_workers": null,
+    "size": 2
+  },
+  {
+    "component": "asyncio",
+    "fault": "error",
+    "id": "corpus-asyncio-22",
+    "manifest": "corpus/corpus-asyncio-22.json",
+    "max_workers": null,
+    "size": 3
+  },
+  {
+    "component": "asyncio",
+    "fault": "reorder",
+    "id": "corpus-asyncio-23",
+    "manifest": "corpus/corpus-asyncio-23.json",
+    "max_workers": null,
+    "size": 4
+  },
+  {
+    "component": "asyncio",
+    "fault": "mixed",
+    "id": "corpus-asyncio-24",
+    "manifest": "corpus/corpus-asyncio-24.json",
+    "max_workers": null,
+    "size": 6
+  },
+  {
+    "component": "threaded",
+    "fault": "none",
+    "id": "corpus-threaded-01",
+    "manifest": "corpus/corpus-threaded-01.json",
+    "max_workers": 1,
+    "size": 2
+  },
+  {
+    "component": "threaded",
+    "fault": "timeout",
+    "id": "corpus-threaded-02",
+    "manifest": "corpus/corpus-threaded-02.json",
+    "max_workers": 2,
+    "size": 3
+  },
+  {
+    "component": "threaded",
+    "fault": "cancel",
+    "id": "corpus-threaded-03",
+    "manifest": "corpus/corpus-threaded-03.json",
+    "max_workers": 3,
+    "size": 4
+  },
+  {
+    "component": "threaded",
+    "fault": "error",
+    "id": "corpus-threaded-04",
+    "manifest": "corpus/corpus-threaded-04.json",
+    "max_workers": 1,
+    "size": 6
+  },
+  {
+    "component": "threaded",
+    "fault": "reorder",
+    "id": "corpus-threaded-05",
+    "manifest": "corpus/corpus-threaded-05.json",
+    "max_workers": 2,
+    "size": 8
+  },
+  {
+    "component": "threaded",
+    "fault": "mixed",
+    "id": "corpus-threaded-06",
+    "manifest": "corpus/corpus-threaded-06.json",
+    "max_workers": 3,
+    "size": 2
+  },
+  {
+    "component": "threaded",
+    "fault": "none",
+    "id": "corpus-threaded-07",
+    "manifest": "corpus/corpus-threaded-07.json",
+    "max_workers": 1,
+    "size": 3
+  },
+  {
+    "component": "threaded",
+    "fault": "timeout",
+    "id": "corpus-threaded-08",
+    "manifest": "corpus/corpus-threaded-08.json",
+    "max_workers": 2,
+    "size": 4
+  },
+  {
+    "component": "threaded",
+    "fault": "cancel",
+    "id": "corpus-threaded-09",
+    "manifest": "corpus/corpus-threaded-09.json",
+    "max_workers": 3,
+    "size": 6
+  },
+  {
+    "component": "threaded",
+    "fault": "error",
+    "id": "corpus-threaded-10",
+    "manifest": "corpus/corpus-threaded-10.json",
+    "max_workers": 1,
+    "size": 8
+  },
+  {
+    "component": "threaded",
+    "fault": "reorder",
+    "id": "corpus-threaded-11",
+    "manifest": "corpus/corpus-threaded-11.json",
+    "max_workers": 2,
+    "size": 2
+  },
+  {
+    "component": "threaded",
+    "fault": "mixed",
+    "id": "corpus-threaded-12",
+    "manifest": "corpus/corpus-threaded-12.json",
+    "max_workers": 3,
+    "size": 3
+  },
+  {
+    "component": "threaded",
+    "fault": "none",
+    "id": "corpus-threaded-13",
+    "manifest": "corpus/corpus-threaded-13.json",
+    "max_workers": 1,
+    "size": 4
+  },
+  {
+    "component": "threaded",
+    "fault": "timeout",
+    "id": "corpus-threaded-14",
+    "manifest": "corpus/corpus-threaded-14.json",
+    "max_workers": 2,
+    "size": 6
+  },
+  {
+    "component": "threaded",
+    "fault": "cancel",
+    "id": "corpus-threaded-15",
+    "manifest": "corpus/corpus-threaded-15.json",
+    "max_workers": 3,
+    "size": 8
+  },
+  {
+    "component": "threaded",
+    "fault": "error",
+    "id": "corpus-threaded-16",
+    "manifest": "corpus/corpus-threaded-16.json",
+    "max_workers": 1,
+    "size": 2
+  },
+  {
+    "component": "threaded",
+    "fault": "reorder",
+    "id": "corpus-threaded-17",
+    "manifest": "corpus/corpus-threaded-17.json",
+    "max_workers": 2,
+    "size": 3
+  },
+  {
+    "component": "threaded",
+    "fault": "mixed",
+    "id": "corpus-threaded-18",
+    "manifest": "corpus/corpus-threaded-18.json",
+    "max_workers": 3,
+    "size": 4
+  },
+  {
+    "component": "threaded",
+    "fault": "none",
+    "id": "corpus-threaded-19",
+    "manifest": "corpus/corpus-threaded-19.json",
+    "max_workers": 1,
+    "size": 6
+  },
+  {
+    "component": "threaded",
+    "fault": "timeout",
+    "id": "corpus-threaded-20",
+    "manifest": "corpus/corpus-threaded-20.json",
+    "max_workers": 2,
+    "size": 8
+  },
+  {
+    "component": "threaded",
+    "fault": "cancel",
+    "id": "corpus-threaded-21",
+    "manifest": "corpus/corpus-threaded-21.json",
+    "max_workers": 3,
+    "size": 2
+  },
+  {
+    "component": "threaded",
+    "fault": "error",
+    "id": "corpus-threaded-22",
+    "manifest": "corpus/corpus-threaded-22.json",
+    "max_workers": 1,
+    "size": 3
+  },
+  {
+    "component": "threaded",
+    "fault": "reorder",
+    "id": "corpus-threaded-23",
+    "manifest": "corpus/corpus-threaded-23.json",
+    "max_workers": 2,
+    "size": 4
+  },
+  {
+    "component": "threaded",
+    "fault": "mixed",
+    "id": "corpus-threaded-24",
+    "manifest": "corpus/corpus-threaded-24.json",
+    "max_workers": 3,
+    "size": 6
+  }
+]
