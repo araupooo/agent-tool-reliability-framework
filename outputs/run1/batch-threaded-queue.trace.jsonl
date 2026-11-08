@@ -1,0 +1,12 @@
+{"batch_id":"batch-threaded-queue","call_ids":["call-t-q1","call-t-q2","call-t-q3","call-t-q4"],"max_workers":1,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"a17540705f2f17c77de71e6450b29a686fe3651149fca2a3307ddd81a3f66a9e","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"worker","tool_call_id":"call-t-q1","type":"call_start","worker_slot":0}
+{"queue_position":0,"seq":2,"tick":0,"tool":"worker","tool_call_id":"call-t-q2","type":"call_queued"}
+{"queue_position":1,"seq":3,"tick":0,"tool":"worker","tool_call_id":"call-t-q3","type":"call_queued"}
+{"queue_position":2,"seq":4,"tick":0,"tool":"worker","tool_call_id":"call-t-q4","type":"call_queued"}
+{"parent_tool_call_id":null,"result_digest":"681d72c862dee00287e8bdd5c29781c0f62088551723ce32243a902a8733eb26","seq":5,"status":"ok","tick":2,"tool_call_id":"call-t-q1","type":"call_end"}
+{"args_digest":"fc5d0636d84d7a72e25f5560deeb1ff49df3d2b18383f33decf7724253c075b6","parent_tool_call_id":null,"seq":6,"tick":2,"tool":"worker","tool_call_id":"call-t-q2","type":"call_start","worker_slot":0}
+{"seq":7,"status":"cancelled","tick":3,"tool_call_id":"call-t-q3","type":"call_cancelled"}
+{"seq":8,"status":"cancelled","tick":3,"tool_call_id":"call-t-q4","type":"call_cancelled"}
+{"reason":"Future.cancel() returns False for a running call","seq":9,"status":"running","tick":3,"tool_call_id":"call-t-q2","type":"cancel_rejected"}
+{"parent_tool_call_id":null,"result_digest":"601de5db9a90801dfa8e73d1023f8cd890cb6a0c64f89b8d4f716112277d3f1f","seq":10,"status":"ok","tick":4,"tool_call_id":"call-t-q2","type":"call_end"}
+{"batch_id":"batch-threaded-queue","cancelled":2,"collection_closed_tick":null,"completed":2,"failed":0,"late_results_reconciled":0,"refused":0,"seq":11,"status":"cancelled","tick":4,"type":"batch_end","values_lost":0}

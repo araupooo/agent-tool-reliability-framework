@@ -1,0 +1,8 @@
+{"batch_id":"batch-reorder","call_ids":["call-slow-1","call-fast-1","call-mid-1"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"17192c26c842aa84c1316f851f045d5e791a96e6bbe16ac86b318db69ded72ed","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"slow_query","tool_call_id":"call-slow-1","type":"call_start"}
+{"args_digest":"5fa38df8ea75e9268b998868e9f6ff0e12f315b8327b32403351c7fa366acfaa","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"read_file","tool_call_id":"call-fast-1","type":"call_start"}
+{"args_digest":"521bad6d073aa63ee360d924c9782e1ca0777a72ed21efdc2f78e678261f4427","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"compute_hash","tool_call_id":"call-mid-1","type":"call_start"}
+{"parent_tool_call_id":null,"result_digest":"d1644780e80f8d91d1e57e818c71e2ed727b5cd9d00bf5fcee3ed2a24df6d1db","seq":4,"status":"ok","tick":1,"tool_call_id":"call-fast-1","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"2d52fa46cb8364073c77a13511f989ff58d850ce2108d572a4f2868bf8ec2138","seq":5,"status":"ok","tick":3,"tool_call_id":"call-mid-1","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"5ba30aadfe0f71d836c2191b75270906c0bf8032a11ecc3a6531396f39f248aa","seq":6,"status":"ok","tick":5,"tool_call_id":"call-slow-1","type":"call_end"}
+{"batch_id":"batch-reorder","cancelled":0,"completed":3,"failed":0,"refused":0,"seq":7,"status":"ok","tick":5,"type":"batch_end"}

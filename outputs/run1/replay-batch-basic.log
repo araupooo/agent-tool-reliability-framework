@@ -1,0 +1,6 @@
+batch: batch-basic
+replay_status: ok
+replay_end_tick: 4
+replay_events: 8
+replay_trace_sha256: 190c6b631f84181af9e757787c80d1f6adb82bc29cfe307e59565d6d306bff81
+replay: MATCH (byte-identical)

@@ -1,0 +1,14 @@
+== scenario: nested-call timing guard (asyncio dispatcher) ==
+batch: batch-nested
+status: ok
+end_tick: 6
+trace_sha256: 5b17ddcdb9115cd37bcd7c219d6006c92f7c6dcf5ae83e6521e973dab33f69d2
+PASS: guarded run: no timing events for the nested sub-call -- nested events=0
+PASS: guarded run: outer call spans ticks 0..6 (2 + 3 + 1) -- 0..6
+PASS: batch status is ok -- ok
+PASS: outer call still returns its own result
+PASS: replay is byte-identical to the recorded trace
+PASS: unguarded run: nested call spans ticks 2..5 -- 2..5
+PASS: unguarded run: nested interval lies strictly inside the outer interval (overlap reproduced) -- outer 0..6, inner 2..5
+PASS: unguarded run: two nested timing events are emitted
+scenario nested timing: ALL PASS

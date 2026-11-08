@@ -1,0 +1,22 @@
+== scenario: partial failure (asyncio dispatcher) ==
+batch: batch-partial
+status: partial_failure
+end_tick: 4
+trace_sha256: 658c96c351dd9bad1832b7c535a07b5ab28876c9864b347817e43c682de8597e
+PASS: exactly one error, for the failing call -- count=1
+PASS: error event is marked is_error
+PASS: error event carries the declared failure
+PASS: batch status is partial_failure -- partial_failure
+PASS: batch ends at tick 4, when the last sibling finishes -- end_tick=4
+PASS: sibling A completes
+PASS: sibling C completes
+PASS: failing call reported as error
+PASS: one result reported per call issued -- 3/3
+PASS: replay is byte-identical to the recorded trace
+naive (gather, no isolation) status: aborted
+naive (gather, no isolation) results_reported: 1/3
+PASS: naive run: batch aborts on the first error (reproduced failure) -- aborted
+PASS: naive run: batch_aborted event is emitted
+PASS: naive run: the later sibling reports nothing
+PASS: naive run: only the already-finished call reports -- reported=1
+scenario partial failure: ALL PASS

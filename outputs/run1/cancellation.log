@@ -1,0 +1,18 @@
+== scenario: cancellation (asyncio dispatcher) ==
+batch: batch-cancel
+status: cancelled
+end_tick: 4
+trace_sha256: 5c7d2e88368f5de00eb0f2bc694d346c81c8d5349d27dec8025a7797f18a8fb1
+PASS: two in-flight calls are cancelled -- count=2
+PASS: the cancelled calls are exactly the two long ones
+PASS: cancellations fire at tick 4
+PASS: quick call completed before cancel
+PASS: batch status is cancelled -- cancelled
+PASS: batch ends at the cancel tick -- end_tick=4
+PASS: one result reported per call issued, including cancelled calls -- 3/3
+PASS: replay is byte-identical to the recorded trace
+naive (drop on cancel) results_reported: 1/3
+PASS: naive run: only the finished call is reported (reproduced failure) -- reported=1
+PASS: naive run: both cancelled calls are missing from the result set
+PASS: naive run: no call_cancelled event is emitted
+scenario cancellation: ALL PASS

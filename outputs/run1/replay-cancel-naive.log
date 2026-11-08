@@ -1,0 +1,6 @@
+batch: batch-cancel
+replay_status: ok
+replay_end_tick: 4
+replay_events: 6
+replay_trace_sha256: f7c3cab9f1be78fdbb5de3479aa3b8489d19e84f3de33cad51e1a3609d773e30
+replay: MATCH (byte-identical)

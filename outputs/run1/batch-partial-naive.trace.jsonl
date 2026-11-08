@@ -1,0 +1,8 @@
+{"batch_id":"batch-partial","call_ids":["call-ok-a","call-fail-b","call-ok-c"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"eda3649ffc32fe27ad49642b0d88988e5a1dfe61efa852470b141a2301c88b5e","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"read_file","tool_call_id":"call-ok-a","type":"call_start"}
+{"args_digest":"c7e4f4a9b043883d84e3a320fca3ce64dff0bf50d121afcd389cbc951e663ead","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"fetch_url","tool_call_id":"call-fail-b","type":"call_start"}
+{"args_digest":"480a7e2fd8bbf7c73c8dffbeefbc2961b79fc68cf8717a3e0dc5995176881a2c","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"compute_hash","tool_call_id":"call-ok-c","type":"call_start"}
+{"parent_tool_call_id":null,"result_digest":"c2906ca607da8edd04c3b140f058c081e84f19b91b0bce5ba9e96db185d8b571","seq":4,"status":"ok","tick":2,"tool_call_id":"call-ok-a","type":"call_end"}
+{"error":"upstream 503: service unavailable","is_error":true,"seq":5,"status":"error","tick":3,"tool_call_id":"call-fail-b","type":"call_error"}
+{"batch_id":"batch-partial","error":"upstream 503: service unavailable","failed_tool_call_id":"call-fail-b","seq":6,"status":"aborted","tick":3,"type":"batch_aborted"}
+{"batch_id":"batch-partial","cancelled":0,"completed":1,"failed":0,"refused":0,"seq":7,"status":"aborted","tick":3,"type":"batch_end"}

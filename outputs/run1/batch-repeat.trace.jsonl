@@ -1,0 +1,9 @@
+{"batch_id":"batch-repeat","call_ids":["call-dup-1","call-dup-2","call-dup-3","call-dup-4"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"c3cf6dfe9545f06ae7ceae745695e8bf0db9c72288a96266f3f396ca54451d85","reason":"identical tool call refused after 3 identical calls in one turn","seq":1,"status":"refused","tick":0,"tool":"read_file","tool_call_id":"call-dup-4","type":"call_refused"}
+{"args_digest":"c3cf6dfe9545f06ae7ceae745695e8bf0db9c72288a96266f3f396ca54451d85","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"read_file","tool_call_id":"call-dup-1","type":"call_start"}
+{"args_digest":"c3cf6dfe9545f06ae7ceae745695e8bf0db9c72288a96266f3f396ca54451d85","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"read_file","tool_call_id":"call-dup-2","type":"call_start"}
+{"args_digest":"c3cf6dfe9545f06ae7ceae745695e8bf0db9c72288a96266f3f396ca54451d85","parent_tool_call_id":null,"seq":4,"tick":0,"tool":"read_file","tool_call_id":"call-dup-3","type":"call_start"}
+{"parent_tool_call_id":null,"result_digest":"f6511d99038afce290a2c8733b6c934848a8a4ba11568904b91430f6f720ce96","seq":5,"status":"ok","tick":1,"tool_call_id":"call-dup-1","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"f6511d99038afce290a2c8733b6c934848a8a4ba11568904b91430f6f720ce96","seq":6,"status":"ok","tick":1,"tool_call_id":"call-dup-2","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"f6511d99038afce290a2c8733b6c934848a8a4ba11568904b91430f6f720ce96","seq":7,"status":"ok","tick":1,"tool_call_id":"call-dup-3","type":"call_end"}
+{"batch_id":"batch-repeat","cancelled":0,"completed":3,"failed":0,"refused":1,"seq":8,"status":"partial_failure","tick":1,"type":"batch_end"}

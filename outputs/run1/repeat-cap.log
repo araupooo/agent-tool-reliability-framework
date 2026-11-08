@@ -1,0 +1,14 @@
+== scenario: identical-call repeat cap (asyncio dispatcher) ==
+batch: batch-repeat
+status: partial_failure
+end_tick: 1
+trace_sha256: cc1009b2b26ccd8b2d899cd43d5bf6ad154155749614ffa16248d570c7e3d01d
+PASS: exactly one refusal, for the fourth identical call -- count=1
+PASS: refusal reason names the cap -- identical tool call refused after 3 identical calls in one turn
+PASS: exactly three calls run to completion
+PASS: the refused call never starts
+PASS: batch status is partial_failure -- partial_failure
+PASS: refused call is still reported
+PASS: one result reported per call issued -- 4/4
+PASS: replay is byte-identical to the recorded trace
+scenario repeat cap: ALL PASS

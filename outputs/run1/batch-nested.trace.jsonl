@@ -1,0 +1,6 @@
+{"batch_id":"batch-nested","call_ids":["call-outer-1","call-plain-1"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"f1f37596190518642efb0e149e6c88281ebdf083a6a45c510cdb7425cd09f756","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"code_mode","tool_call_id":"call-outer-1","type":"call_start"}
+{"args_digest":"c3cf6dfe9545f06ae7ceae745695e8bf0db9c72288a96266f3f396ca54451d85","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"read_file","tool_call_id":"call-plain-1","type":"call_start"}
+{"parent_tool_call_id":null,"result_digest":"f6511d99038afce290a2c8733b6c934848a8a4ba11568904b91430f6f720ce96","seq":3,"status":"ok","tick":2,"tool_call_id":"call-plain-1","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"1ea84be9dba9ab75845f03c6e3ee977f56ee550afe4c14ed3413b5c415e17183","seq":4,"status":"ok","tick":6,"tool_call_id":"call-outer-1","type":"call_end"}
+{"batch_id":"batch-nested","cancelled":0,"completed":2,"failed":0,"refused":0,"seq":5,"status":"ok","tick":6,"type":"batch_end"}

@@ -1,0 +1,12 @@
+{"batch_id":"batch-threaded-basic","call_ids":["call-t-1","call-t-2","call-t-3","call-t-4"],"max_workers":2,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"d93c19f5596754c02e9c6879dced2e71d5daa773fd4be6b91feaac06175649ab","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"read_file","tool_call_id":"call-t-1","type":"call_start","worker_slot":0}
+{"args_digest":"aa3feabb557615d22d6ad538069ba616bfbef5adb4530ae0046d16bac3482e1c","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"compute_hash","tool_call_id":"call-t-2","type":"call_start","worker_slot":1}
+{"queue_position":0,"seq":3,"tick":0,"tool":"fetch_url","tool_call_id":"call-t-3","type":"call_queued"}
+{"queue_position":1,"seq":4,"tick":0,"tool":"read_file","tool_call_id":"call-t-4","type":"call_queued"}
+{"parent_tool_call_id":null,"result_digest":"78ff1bf545102604fe8f7d491753db5e301e882b1b96daf93c9b500311ea187d","seq":5,"status":"ok","tick":1,"tool_call_id":"call-t-2","type":"call_end"}
+{"args_digest":"d1a1d9f2a67fc3f8de57cf32e2b9f2f6a443525da8954105e70545ce31e9d9f4","parent_tool_call_id":null,"seq":6,"tick":1,"tool":"fetch_url","tool_call_id":"call-t-3","type":"call_start","worker_slot":1}
+{"parent_tool_call_id":null,"result_digest":"c2906ca607da8edd04c3b140f058c081e84f19b91b0bce5ba9e96db185d8b571","seq":7,"status":"ok","tick":2,"tool_call_id":"call-t-1","type":"call_end"}
+{"args_digest":"aea567cbc7d8bfaa08f5a4714630611c7ee05861e815e105fdfa106e9fc1e7e3","parent_tool_call_id":null,"seq":8,"tick":2,"tool":"read_file","tool_call_id":"call-t-4","type":"call_start","worker_slot":1}
+{"parent_tool_call_id":null,"result_digest":"43a446e573f1072d069fd47d25eb84cfcc8aacd4a7281633bc40f3a212c99e24","seq":9,"status":"ok","tick":3,"tool_call_id":"call-t-4","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"4b5167799e629f3327bbfe3a550a00e8e0ed65a8ef330bd5357f833333fbaa7a","seq":10,"status":"ok","tick":4,"tool_call_id":"call-t-3","type":"call_end"}
+{"batch_id":"batch-threaded-basic","cancelled":0,"collection_closed_tick":null,"completed":4,"failed":0,"late_results_reconciled":0,"refused":0,"seq":11,"status":"ok","tick":4,"type":"batch_end","values_lost":0}
