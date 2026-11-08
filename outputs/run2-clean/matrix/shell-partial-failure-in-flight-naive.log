@@ -1,0 +1,13 @@
+== matrix cell: shell/partial-failure/in-flight (naive) ==
+completion_order: call-sh-b,call-sh-a,call-sh-c
+issued: 3
+preserved: 2
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+status: ok
+events: 8
+trace_sha256: bfce57d8a724722f2675f291debec4bd9eca51494d1038eb2423f7a22280c718
+trace_file: outputs/run1/matrix/shell-partial-failure-in-flight-naive/cell.trace.jsonl
+cell shell/partial-failure/in-flight: DONE

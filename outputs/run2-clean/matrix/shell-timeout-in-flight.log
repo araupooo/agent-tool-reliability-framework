@@ -1,0 +1,13 @@
+== matrix cell: shell/timeout/in-flight ==
+completion_order: call-sh-b,call-sh-a,call-sh-c
+issued: 3
+preserved: 2
+errored: 1
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+status: partial_failure
+events: 8
+trace_sha256: f3637558c5ad2a7617e72a27d02ed214b4c950da7c66746477a1ebb8b465f3aa
+trace_file: outputs/run1/matrix/shell-timeout-in-flight/cell.trace.jsonl
+cell shell/timeout/in-flight: DONE

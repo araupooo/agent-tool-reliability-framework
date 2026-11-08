@@ -1,0 +1,9 @@
+{"batch_id":"matrix-threaded-cancellation-in-flight","call_ids":["call-m-long-a","call-m-long-b","call-m-quick"],"max_workers":1,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"12d3698ac5578360e20da3c13a4501fc8026d02380c2c52e05904ad36a095bca","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"long_task","tool_call_id":"call-m-long-a","type":"call_start","worker_slot":0}
+{"queue_position":0,"seq":2,"tick":0,"tool":"long_task","tool_call_id":"call-m-long-b","type":"call_queued"}
+{"queue_position":1,"seq":3,"tick":0,"tool":"read_file","tool_call_id":"call-m-quick","type":"call_queued"}
+{"seq":4,"status":"cancelled","tick":4,"tool_call_id":"call-m-long-b","type":"call_cancelled"}
+{"seq":5,"status":"cancelled","tick":4,"tool_call_id":"call-m-quick","type":"call_cancelled"}
+{"reason":"Future.cancel() returns False for a running call","seq":6,"status":"running","tick":4,"tool_call_id":"call-m-long-a","type":"cancel_rejected"}
+{"parent_tool_call_id":null,"result_digest":"ef68da432e640be3fe104d6f241f3cde54e758208ef887c294a63ffa4dc55746","seq":7,"status":"ok","tick":10,"tool_call_id":"call-m-long-a","type":"call_end"}
+{"batch_id":"matrix-threaded-cancellation-in-flight","cancelled":2,"collection_closed_tick":null,"completed":1,"failed":0,"late_results_reconciled":0,"refused":0,"seq":8,"status":"cancelled","tick":10,"type":"batch_end","values_lost":0}

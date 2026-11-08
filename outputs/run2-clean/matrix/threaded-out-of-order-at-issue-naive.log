@@ -1,0 +1,13 @@
+== matrix cell (naive): threaded/out-of-order/at-issue ==
+batch: matrix-threaded-out-of-order-at-issue
+status: ok
+end_tick: 5
+events: 8
+issued: 3
+preserved: 3
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-fast,call-m-mid,call-m-slow
+trace_sha256: f0bb6380afcc68af38015d636c0763471c6303e4653f9b0cf76221d78bbd2416

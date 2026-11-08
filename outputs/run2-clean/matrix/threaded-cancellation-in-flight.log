@@ -1,0 +1,13 @@
+== matrix cell: threaded/cancellation/in-flight ==
+batch: matrix-threaded-cancellation-in-flight
+status: cancelled
+end_tick: 10
+events: 9
+issued: 3
+preserved: 1
+errored: 2
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-long-a
+trace_sha256: 78c8e58b7a1cd92834cd4fdf94a3e698a3309562ce029f3a2be6c356de724072

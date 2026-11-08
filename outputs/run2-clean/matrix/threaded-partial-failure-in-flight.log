@@ -1,0 +1,13 @@
+== matrix cell: threaded/partial-failure/in-flight ==
+batch: matrix-threaded-partial-failure-in-flight
+status: partial_failure
+end_tick: 6
+events: 9
+issued: 3
+preserved: 2
+errored: 1
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-ok-a,call-m-fail-b,call-m-ok-c
+trace_sha256: 7f2357a2b75cbbf6c941a12cfe6647e0920f797eb6a60823f79f338dd91375bd

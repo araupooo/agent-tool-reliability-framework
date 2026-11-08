@@ -1,0 +1,13 @@
+== matrix cell: shell/partial-failure/at-issue (naive) ==
+completion_order: call-sh-a,call-sh-b,call-sh-c
+issued: 3
+preserved: 2
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+status: ok
+events: 8
+trace_sha256: 39a5e789bbdf7b711e895a4351e2cfe1ace756f3da9d1c45bbd1cf15efa1637c
+trace_file: outputs/run1/matrix/shell-partial-failure-at-issue-naive/cell.trace.jsonl
+cell shell/partial-failure/at-issue: DONE

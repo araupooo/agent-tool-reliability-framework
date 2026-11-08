@@ -1,0 +1,14 @@
+== matrix cell: shell/out-of-order/in-flight (naive) ==
+completion_order: call-sh-b,call-sh-a,call-sh-c
+by-position attribution: alpha->call-sh-b, beta->call-sh-c, gamma->call-sh-a (all misattributed)
+issued: 3
+preserved: 0
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 3
+status: ok
+events: 8
+trace_sha256: 3e06d01df45a144300cee0169f46a73e9cea3d3cba48c93c2289cc88d70d2753
+trace_file: outputs/run1/matrix/shell-out-of-order-in-flight-naive/cell.trace.jsonl
+cell shell/out-of-order/in-flight: DONE

@@ -1,0 +1,14 @@
+== matrix cell: shell/out-of-order/at-issue ==
+completion_order: call-sh-b,call-sh-a,call-sh-c
+by-id attribution: every output matched to its own call id
+issued: 3
+preserved: 3
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+status: ok
+events: 8
+trace_sha256: 536eb2929bc728086a9bd03a78adc2e2aede699bcc938fb8157674d9b3b8c8c7
+trace_file: outputs/run1/matrix/shell-out-of-order-at-issue/cell.trace.jsonl
+cell shell/out-of-order/at-issue: DONE
