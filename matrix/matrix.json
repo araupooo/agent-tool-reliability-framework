@@ -1,0 +1,417 @@
+{
+  "cells": [
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "cancellation",
+      "point": "at-completion"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 3,
+        "issued": 3,
+        "preserved": 0
+      },
+      "fault": "cancellation",
+      "point": "at-issue"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 2,
+        "issued": 3,
+        "preserved": 1
+      },
+      "fault": "cancellation",
+      "point": "in-flight"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 0,
+        "issued": 3,
+        "preserved": 3
+      },
+      "fault": "out-of-order",
+      "point": "at-completion"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 0,
+        "issued": 3,
+        "preserved": 3
+      },
+      "fault": "out-of-order",
+      "point": "at-issue"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 0,
+        "issued": 3,
+        "preserved": 3
+      },
+      "fault": "out-of-order",
+      "point": "in-flight"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "partial-failure",
+      "point": "at-completion"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "partial-failure",
+      "point": "at-issue"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "partial-failure",
+      "point": "in-flight"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "timeout",
+      "point": "at-completion"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "timeout",
+      "point": "at-issue"
+    },
+    {
+      "component": "asyncio",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "timeout",
+      "point": "in-flight"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "cancellation",
+      "point": "at-completion"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "cancellation",
+      "point": "at-issue"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "cancellation",
+      "point": "in-flight"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 0,
+        "issued": 3,
+        "preserved": 3
+      },
+      "fault": "out-of-order",
+      "point": "at-completion"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 0,
+        "issued": 3,
+        "preserved": 3
+      },
+      "fault": "out-of-order",
+      "point": "at-issue"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 0,
+        "issued": 3,
+        "preserved": 3
+      },
+      "fault": "out-of-order",
+      "point": "in-flight"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "partial-failure",
+      "point": "at-completion"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "partial-failure",
+      "point": "at-issue"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "partial-failure",
+      "point": "in-flight"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "timeout",
+      "point": "at-completion"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "timeout",
+      "point": "at-issue"
+    },
+    {
+      "component": "shell",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "timeout",
+      "point": "in-flight"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "cancellation",
+      "point": "at-completion"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 2,
+        "issued": 3,
+        "preserved": 1
+      },
+      "fault": "cancellation",
+      "point": "at-issue"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 2,
+        "issued": 3,
+        "preserved": 1
+      },
+      "fault": "cancellation",
+      "point": "in-flight"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 0,
+        "issued": 3,
+        "preserved": 3
+      },
+      "fault": "out-of-order",
+      "point": "at-completion"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 0,
+        "issued": 3,
+        "preserved": 3
+      },
+      "fault": "out-of-order",
+      "point": "at-issue"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 0,
+        "issued": 3,
+        "preserved": 3
+      },
+      "fault": "out-of-order",
+      "point": "in-flight"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "partial-failure",
+      "point": "at-completion"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "partial-failure",
+      "point": "at-issue"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "partial-failure",
+      "point": "in-flight"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 0,
+        "issued": 3,
+        "preserved": 3
+      },
+      "fault": "timeout",
+      "point": "at-completion"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "timeout",
+      "point": "at-issue"
+    },
+    {
+      "component": "threaded",
+      "expected": {
+        "dropped": 0,
+        "errored": 1,
+        "issued": 3,
+        "preserved": 2
+      },
+      "fault": "timeout",
+      "point": "in-flight"
+    }
+  ],
+  "components": [
+    "asyncio",
+    "threaded",
+    "shell"
+  ],
+  "description": "Fault-injection matrix: fault type x component x injection point. Each cell is a runnable case; correct mode must report one terminal record per issued call (dropped == 0) with every non-ok call visibly reported. Expected counts are asserted by scripts/run_matrix.py. Naive-mode results are recorded alongside each cell but not asserted: they reproduce the classic failure modes (see findings.md).",
+  "faults": [
+    "timeout",
+    "cancellation",
+    "partial-failure",
+    "out-of-order"
+  ],
+  "points": [
+    "at-issue",
+    "in-flight",
+    "at-completion"
+  ]
+}
