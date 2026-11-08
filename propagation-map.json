@@ -1,0 +1,1901 @@
+{
+  "cells": [
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-cancellation-at-completion.log",
+        "naive_log": "outputs/run1/matrix/asyncio-cancellation-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-cancellation-at-completion.trace.jsonl"
+      },
+      "fault": "cancellation",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 11,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "cancelled",
+        "trace_sha256": "3589025f421adf273bc7cd040537f3f39db7918e5da93843d0338bc61ef2eee5",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 1,
+        "end_tick": 11,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "ok",
+        "trace_sha256": "4637333dd7c127471c360f6e261a14c0581cf2bcbc83c7f5329a46f9ccf7da79",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Emit one call_cancelled record per in-flight call at the cancel tick; report every issued call.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Cancel is scheduled for tick 11."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The quick call completes at tick 3 and long-a at tick 10; only long-b is in flight at tick 11."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_cancelled for long-b at tick 11."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends cancelled at tick 11 with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "A cancel path that drops pending calls reports only the finished calls (naive mode: 1-3 dropped, 0 call_cancelled events)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-cancellation-at-issue.log",
+        "naive_log": "outputs/run1/matrix/asyncio-cancellation-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-cancellation-at-issue.trace.jsonl"
+      },
+      "fault": "cancellation",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 0,
+        "errored": 3,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 0,
+        "status": "cancelled",
+        "trace_sha256": "d5be2be2237feee10ac20e30e96926457b6a16cb29e815a29eeea3ba617521e3",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 3,
+        "end_tick": 0,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 0,
+        "status": "ok",
+        "trace_sha256": "ab365f5771a30f5241950053ce77ed23a5b2601493ca5990ab798456a8fa8c53",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Emit one call_cancelled record per in-flight call at the cancel tick; report every issued call.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Cancel is scheduled for tick 0, before any call completes."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "All three calls are in flight when the cancel fires; every unfinished task is cancelled."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_cancelled for all three calls at tick 0."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends cancelled at tick 0 with 0 preserved, 3 errored, 0 dropped: every call is reported, none silently."
+        }
+      ],
+      "where_results_can_be_lost": "A cancel path that drops pending calls reports only the finished calls (naive mode: 1-3 dropped, 0 call_cancelled events)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-cancellation-in-flight.log",
+        "naive_log": "outputs/run1/matrix/asyncio-cancellation-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-cancellation-in-flight.trace.jsonl"
+      },
+      "fault": "cancellation",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 4,
+        "errored": 2,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 1,
+        "status": "cancelled",
+        "trace_sha256": "8c61b3c3a3f02ee988a4ffbb5a75fc7abbe30fc94582b26d9a74c6d3cdfc471d",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 2,
+        "end_tick": 4,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 1,
+        "status": "ok",
+        "trace_sha256": "7cd04ca111418f5ee4170e9ae1bd2509561568c6da6f7da05dc656e42a15bd6e",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Emit one call_cancelled record per in-flight call at the cancel tick; report every issued call.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Cancel is scheduled for tick 4."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The quick call completes at tick 3; the two long calls are still in flight at tick 4."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_cancelled for both long calls at tick 4."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends cancelled at tick 4 with 1 preserved, 2 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "A cancel path that drops pending calls reports only the finished calls (naive mode: 1-3 dropped, 0 call_cancelled events)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-out-of-order-at-completion.log",
+        "naive_log": "outputs/run1/matrix/asyncio-out-of-order-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-out-of-order-at-completion.trace.jsonl"
+      },
+      "fault": "out-of-order",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "59a270fc419ad55ffdee0414660689d60f3a2ca847ce4c8f28396251aeb22fd2",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "59a270fc419ad55ffdee0414660689d60f3a2ca847ce4c8f28396251aeb22fd2",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Match every result to its call by tool_call_id only; never zip completion-order results onto issue-order ids.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Calls are issued slow, fast, mid."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Calls complete fast, mid, slow."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_end events in completion order fast, mid, slow."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Attribution happens at collection time: by-id is correct (3 preserved); by-position misattributes all 3."
+        }
+      ],
+      "where_results_can_be_lost": "Attributing results by completion position misattributes every result when completion order differs from issue order (naive mode: 3 misattributed at in-flight and at-completion)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-out-of-order-at-issue.log",
+        "naive_log": "outputs/run1/matrix/asyncio-out-of-order-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-out-of-order-at-issue.trace.jsonl"
+      },
+      "fault": "out-of-order",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "639c5e316aedeb3be83e06355eec7bdf0e6bbee926552a718fe5c09095427c98",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "639c5e316aedeb3be83e06355eec7bdf0e6bbee926552a718fe5c09095427c98",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Match every result to its call by tool_call_id only; never zip completion-order results onto issue-order ids.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Calls are issued in completion order (fast, mid, slow), so issue order and completion order agree."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Durations are 1, 3, and 5 ticks; calls complete in issue order."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_end events in order fast, mid, slow."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "By-id and by-position collectors agree here (0 misattributed): position attribution only fails when completion order differs from issue order. 3 preserved, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Attributing results by completion position misattributes every result when completion order differs from issue order (naive mode: 3 misattributed at in-flight and at-completion)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-out-of-order-in-flight.log",
+        "naive_log": "outputs/run1/matrix/asyncio-out-of-order-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-out-of-order-in-flight.trace.jsonl"
+      },
+      "fault": "out-of-order",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "8f30f9ff37d945b3ceb30e6dec1eaacd54b2865772f6f7a126b0d47c4ff376f6",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "8f30f9ff37d945b3ceb30e6dec1eaacd54b2865772f6f7a126b0d47c4ff376f6",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Match every result to its call by tool_call_id only; never zip completion-order results onto issue-order ids.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Calls are issued slow, fast, mid."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Durations are 5, 1, and 3 ticks, so the calls complete fast, mid, slow."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_end events in completion order fast, mid, slow."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "By-id collection attributes every result correctly (3 preserved); the position-based collector misattributes all 3."
+        }
+      ],
+      "where_results_can_be_lost": "Attributing results by completion position misattributes every result when completion order differs from issue order (naive mode: 3 misattributed at in-flight and at-completion)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-partial-failure-at-completion.log",
+        "naive_log": "outputs/run1/matrix/asyncio-partial-failure-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-partial-failure-at-completion.trace.jsonl"
+      },
+      "fault": "partial-failure",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 4,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "ad4dd0f84b18bc1959b917300995cc8947dc6492cef08fee41430d48070bf095",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 1,
+        "end_tick": 4,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "aborted",
+        "trace_sha256": "a2c9fe4b0c6d045a636eea0c1c81af8e72b5ca6d5fd2d15a5356ae2d130bbc16",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Isolate per-call errors (is_error: true) and let siblings complete; report the batch as partial_failure.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The failing call is declared with a 4-tick duration, the same tick the last sibling completes."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The failure is raised at tick 4 as the last sibling completes."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_error with is_error: true for the failing call at tick 4."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends partial_failure at tick 4 with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Aborting the batch on the first error drops every call that has not finished yet (naive mode: 1-3 dropped, batch aborted)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-partial-failure-at-issue.log",
+        "naive_log": "outputs/run1/matrix/asyncio-partial-failure-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-partial-failure-at-issue.trace.jsonl"
+      },
+      "fault": "partial-failure",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 4,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "146930a51c42b99ce954f24432ac03d302d7e0e3e39160be1fd1998ad734a0e4",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 3,
+        "end_tick": 0,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 0,
+        "status": "aborted",
+        "trace_sha256": "cdb5c6cac6b2926f6703397e5e3f3b6980643d890ad70adcf7fe8b83877cf98e",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Isolate per-call errors (is_error: true) and let siblings complete; report the batch as partial_failure.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The failing call is declared with a 0-tick duration, so it fails immediately."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The failure is raised at tick 0; per-call isolation keeps the siblings running."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_error with is_error: true for the failing call at tick 0."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Both siblings complete; batch ends partial_failure at tick 4 with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Aborting the batch on the first error drops every call that has not finished yet (naive mode: 1-3 dropped, batch aborted)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-partial-failure-in-flight.log",
+        "naive_log": "outputs/run1/matrix/asyncio-partial-failure-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-partial-failure-in-flight.trace.jsonl"
+      },
+      "fault": "partial-failure",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 4,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "5112b297740f602dd9efa008f5a293c3425b70e73801f5b730d211c91329db2c",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 2,
+        "end_tick": 3,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 1,
+        "status": "aborted",
+        "trace_sha256": "b3d8e5f04224edef21f39347afcb73d9fd04aa5f87584ec079a70bb939f5112a",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Isolate per-call errors (is_error: true) and let siblings complete; report the batch as partial_failure.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The failing call is declared with a 3-tick duration."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The failure is raised at tick 3, mid-batch; per-call isolation keeps the siblings running."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_error with is_error: true for the failing call at tick 3."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Both siblings complete; batch ends partial_failure at tick 4 with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Aborting the batch on the first error drops every call that has not finished yet (naive mode: 1-3 dropped, batch aborted)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-timeout-at-completion.log",
+        "naive_log": "outputs/run1/matrix/asyncio-timeout-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-timeout-at-completion.trace.jsonl"
+      },
+      "fault": "timeout",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 20,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "78abdd38c7e64be6ea8318d7540bd0f2f986c9bc1029509836177fb09bb0591e",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 20,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "8309a543152855c040bc5cacbf9485d60daf3ee3b9e3a15e9a2702c4714e1a83",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Schedule a per-call deadline at issue; report the timeout as a terminal record and free the batch to end on the siblings' schedule.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Deadline of 20 ticks equals the slow call's 20-tick duration."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The deadline event was scheduled before the call's wake event, so at tick 20 the deadline wins the tie."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_timeout for the slow call at tick 20, even though its work would have finished on the same tick."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends at tick 20 partial_failure with 2 preserved, 1 errored, 0 dropped. Contrast the threaded dispatcher, where the completion wins the same tie."
+        }
+      ],
+      "where_results_can_be_lost": "Without a per-call deadline the slow call holds the batch and no timeout is ever reported (naive mode: 0 errors reported, batch ends at tick 20)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-timeout-at-issue.log",
+        "naive_log": "outputs/run1/matrix/asyncio-timeout-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-timeout-at-issue.trace.jsonl"
+      },
+      "fault": "timeout",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 6,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "89a27708d1c09065b265336b24de3d2b7bd2f1d2725c188972901ae246136746",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 20,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "9def7d559411b590a4ac426d8c614f88fc5a1c8a458c86d7b43f939b3b722522",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Schedule a per-call deadline at issue; report the timeout as a terminal record and free the batch to end on the siblings' schedule.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Deadline of 2 ticks is scheduled when the call is issued."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The slow call runs; the deadline event fires at tick 2, before any sibling completes."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_timeout for the slow call at tick 2; the call is cancelled and reported timeout."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Siblings complete on schedule; batch ends partial_failure with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Without a per-call deadline the slow call holds the batch and no timeout is ever reported (naive mode: 0 errors reported, batch ends at tick 20)."
+    },
+    {
+      "component": "asyncio",
+      "evidence": {
+        "log": "outputs/run1/matrix/asyncio-timeout-in-flight.log",
+        "naive_log": "outputs/run1/matrix/asyncio-timeout-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/asyncio-timeout-in-flight.trace.jsonl"
+      },
+      "fault": "timeout",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 6,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "e1f6de212736a501513600cba22348644679c81317efdb2f34363295bee7d420",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 20,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "9d2a77da3f4a0d056ce497d9f33dc14b913929f16c35cbc9162a79f5ce6f4977",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Schedule a per-call deadline at issue; report the timeout as a terminal record and free the batch to end on the siblings' schedule.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Deadline of 5 ticks is scheduled when the call is issued."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The slow call runs; the deadline event fires at tick 5, mid-batch."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_timeout for the slow call at tick 5."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Siblings complete on schedule; batch ends partial_failure with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Without a per-call deadline the slow call holds the batch and no timeout is ever reported (naive mode: 0 errors reported, batch ends at tick 20)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-cancellation-at-completion.log",
+        "naive_log": "outputs/run1/matrix/shell-cancellation-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/shell-cancellation-at-completion.trace.jsonl"
+      },
+      "fault": "cancellation",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "cancelled",
+        "trace_sha256": "fa586916b9889288aa9acc99dbf5fea7ebbc9b2ade5e882edb9777c6003dc744",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 1,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "ok",
+        "trace_sha256": "aabef853b61d8fbc0de7ffdf72c88c556eab52c1516a9f32c3cb66c500e866c9",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Record every job from its `wait -n` exit status (143 = killed), not from its output file; emit call_cancelled for the killed job.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Three jobs start; the faulted job sleeps 0.9 s."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Both siblings finish (0.3 s, 0.7 s); the faulted job is killed with SIGTERM at 0.8 s, just before it would have finished, and exits 143."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_cancelled for the killed job (exit 143)."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends cancelled with 2 preserved, 1 errored, 0 dropped. Naive mode never records the killed job: dropped 1."
+        }
+      ],
+      "where_results_can_be_lost": "A killed job leaves only a partial output file; a collector that reads output files but not wait status never records it (naive mode: dropped 1)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-cancellation-at-issue.log",
+        "naive_log": "outputs/run1/matrix/shell-cancellation-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/shell-cancellation-at-issue.trace.jsonl"
+      },
+      "fault": "cancellation",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "cancelled",
+        "trace_sha256": "8d8193045a3470cf60f5f914ad4ac904efed31d42309cb3987b9ab87b3cddf09",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 1,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "ok",
+        "trace_sha256": "d1016f05b6b8b008a0a4bf5f096358227197ebf3cf37992e8b4c663479a52272",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Record every job from its `wait -n` exit status (143 = killed), not from its output file; emit call_cancelled for the killed job.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The faulted job is never started; it is recorded cancelled at issue time."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Only the two healthy jobs run."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_cancelled for the never-started job; call_end for both siblings."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends cancelled with 2 preserved, 1 errored, 0 dropped. Naive mode never records the job: dropped 1."
+        }
+      ],
+      "where_results_can_be_lost": "A killed job leaves only a partial output file; a collector that reads output files but not wait status never records it (naive mode: dropped 1)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-cancellation-in-flight.log",
+        "naive_log": "outputs/run1/matrix/shell-cancellation-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/shell-cancellation-in-flight.trace.jsonl"
+      },
+      "fault": "cancellation",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "cancelled",
+        "trace_sha256": "04078bba7b1c91d0d3b0b926c922d65ae636c7641d6d729ce23aa18498101603",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 1,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "ok",
+        "trace_sha256": "69e5937011ba1c7786f2d11cfd6207228f47af75e1f7c6e8961158acd8a62c6f",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Record every job from its `wait -n` exit status (143 = killed), not from its output file; emit call_cancelled for the killed job.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Three jobs start; the faulted job sleeps 5 s."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The faulted job is killed with SIGTERM at 0.35 s and exits 143."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_cancelled for the killed job (exit 143)."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends cancelled with 2 preserved, 1 errored, 0 dropped. Naive mode never records the killed job: dropped 1."
+        }
+      ],
+      "where_results_can_be_lost": "A killed job leaves only a partial output file; a collector that reads output files but not wait status never records it (naive mode: dropped 1)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-out-of-order-at-completion.log",
+        "naive_log": "outputs/run1/matrix/shell-out-of-order-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/shell-out-of-order-at-completion.trace.jsonl"
+      },
+      "fault": "out-of-order",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "073155c4cea887d4edca5426b4a3a76f159b3aff6a572a6940e76015121017d0",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 0,
+        "status": "ok",
+        "trace_sha256": "073155c4cea887d4edca5426b4a3a76f159b3aff6a572a6940e76015121017d0",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Match every output file to its call by call id (the per-call .out file), never by completion position.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Jobs are issued alpha, beta, gamma with sleeps 0.5, 0.3, 0.7 s."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Jobs complete in sleep order (beta, alpha, gamma)."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_end events in completion order beta, alpha, gamma."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Attribution happens at collection time: by-id is correct (3 preserved); by-position misattributes all 3."
+        }
+      ],
+      "where_results_can_be_lost": "Attributing outputs by completion position misattributes every output (naive mode: 3 misattributed at every point)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-out-of-order-at-issue.log",
+        "naive_log": "outputs/run1/matrix/shell-out-of-order-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/shell-out-of-order-at-issue.trace.jsonl"
+      },
+      "fault": "out-of-order",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "536eb2929bc728086a9bd03a78adc2e2aede699bcc938fb8157674d9b3b8c8c7",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 0,
+        "status": "ok",
+        "trace_sha256": "536eb2929bc728086a9bd03a78adc2e2aede699bcc938fb8157674d9b3b8c8c7",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Match every output file to its call by call id (the per-call .out file), never by completion position.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Jobs are issued in shuffled order (gamma, alpha, beta) with sleeps 0.7, 0.5, 0.3 s."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Jobs complete in sleep order (beta, alpha, gamma), regardless of issue order."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_end events in completion order beta, alpha, gamma."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "By-id collection attributes every output correctly (3 preserved); the position-based collector misattributes all 3."
+        }
+      ],
+      "where_results_can_be_lost": "Attributing outputs by completion position misattributes every output (naive mode: 3 misattributed at every point)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-out-of-order-in-flight.log",
+        "naive_log": "outputs/run1/matrix/shell-out-of-order-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/shell-out-of-order-in-flight.trace.jsonl"
+      },
+      "fault": "out-of-order",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "3e06d01df45a144300cee0169f46a73e9cea3d3cba48c93c2289cc88d70d2753",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 0,
+        "status": "ok",
+        "trace_sha256": "3e06d01df45a144300cee0169f46a73e9cea3d3cba48c93c2289cc88d70d2753",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Match every output file to its call by call id (the per-call .out file), never by completion position.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Jobs are issued alpha, beta, gamma with sleeps 0.5, 0.3, 0.7 s."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Jobs complete in sleep order (beta, alpha, gamma)."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_end events in completion order beta, alpha, gamma."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "By-id collection attributes every output correctly (3 preserved); the position-based collector misattributes all 3."
+        }
+      ],
+      "where_results_can_be_lost": "Attributing outputs by completion position misattributes every output (naive mode: 3 misattributed at every point)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-partial-failure-at-completion.log",
+        "naive_log": "outputs/run1/matrix/shell-partial-failure-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/shell-partial-failure-at-completion.trace.jsonl"
+      },
+      "fault": "partial-failure",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "d1d689cabab17a8cf080e8762276e98dae0449a26a441aa8b3e074500a5895c2",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "ok",
+        "trace_sha256": "c41357f74c2f4bd1cba12513d8dc6a6f9a6133c6e94643bbd0835b1c4938a327",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Assert the exit code for every job; a non-zero exit is a call_error record with is_error: true.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The faulted job sleeps 0.7 s and then exits 3, at the same time the last sibling finishes."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The failure lands at completion time; it is visible only in the exit code."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_error with the exit code for the faulted job."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends partial_failure with 2 preserved, 1 errored, 0 dropped. Naive mode ignores the exit code: 0 errors reported."
+        }
+      ],
+      "where_results_can_be_lost": "A collector that ignores exit codes records a failed job as ok (naive mode: 0 errors reported, failed output recorded as a good result)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-partial-failure-at-issue.log",
+        "naive_log": "outputs/run1/matrix/shell-partial-failure-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/shell-partial-failure-at-issue.trace.jsonl"
+      },
+      "fault": "partial-failure",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "744962d285ad64b12c60d3b7cafd05731779f96c45c7e021853676f68f75099f",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "ok",
+        "trace_sha256": "39a5e789bbdf7b711e895a4351e2cfe1ace756f3da9d1c45bbd1cf15efa1637c",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Assert the exit code for every job; a non-zero exit is a call_error record with is_error: true.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The faulted job exits 3 immediately, before any sibling finishes."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The failure is visible in the job's exit code as soon as it is reaped."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_error with the exit code for the faulted job."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Siblings complete; batch ends partial_failure with 2 preserved, 1 errored, 0 dropped. Naive mode ignores the exit code and records the failure as ok: 0 errors reported."
+        }
+      ],
+      "where_results_can_be_lost": "A collector that ignores exit codes records a failed job as ok (naive mode: 0 errors reported, failed output recorded as a good result)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-partial-failure-in-flight.log",
+        "naive_log": "outputs/run1/matrix/shell-partial-failure-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/shell-partial-failure-in-flight.trace.jsonl"
+      },
+      "fault": "partial-failure",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "cc907a9339c7f794828b83dc61047b31db4f1862531778131d7120695df18b54",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "ok",
+        "trace_sha256": "bfce57d8a724722f2675f291debec4bd9eca51494d1038eb2423f7a22280c718",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Assert the exit code for every job; a non-zero exit is a call_error record with is_error: true.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The faulted job sleeps 0.5 s and then exits 3."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The first sibling finishes at 0.3 s; the faulted job fails at 0.5 s."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_error with the exit code for the faulted job."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends partial_failure with 2 preserved, 1 errored, 0 dropped. Naive mode ignores the exit code: 0 errors reported."
+        }
+      ],
+      "where_results_can_be_lost": "A collector that ignores exit codes records a failed job as ok (naive mode: 0 errors reported, failed output recorded as a good result)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-timeout-at-completion.log",
+        "naive_log": "outputs/run1/matrix/shell-timeout-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/shell-timeout-at-completion.trace.jsonl"
+      },
+      "fault": "timeout",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "6b7a17cc521bae75e290f00a931bc0715e4d6d3f9a687f47ece4fde2d057dc29",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "dd83207141d0e57c46b0fb4fba1819944b3047491086672c42346995e104fee1",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Wrap the job in `timeout N`; exit 124 is recorded as a call_timeout terminal record.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The slow job is wrapped in `timeout 0.8 sleep 5`."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Both siblings finish (0.3 s, 0.7 s) before the timeout fires at 0.8 s; the job exits 124."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_timeout for the slow job (exit 124), after every other job completed."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends partial_failure with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Without the `timeout` wrapper the slow job runs to completion and no timeout is ever reported (naive mode: 0 errors reported)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-timeout-at-issue.log",
+        "naive_log": "outputs/run1/matrix/shell-timeout-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/shell-timeout-at-issue.trace.jsonl"
+      },
+      "fault": "timeout",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "e091a820ffc0781097c2fa76968b90aecf20fead315fcbefe95df36100601ef4",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "e1c193a2bd070d1a19a7ec4546a28b71d3171f602287a42ebcbd278fd812ad09",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Wrap the job in `timeout N`; exit 124 is recorded as a call_timeout terminal record.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The slow job is wrapped in `timeout 0.2 sleep 5`."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The timeout kills the sleep after 0.2 s, before any sibling finishes; the job exits 124."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_timeout for the slow job (exit 124)."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Siblings complete; batch ends partial_failure with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Without the `timeout` wrapper the slow job runs to completion and no timeout is ever reported (naive mode: 0 errors reported)."
+    },
+    {
+      "component": "shell",
+      "evidence": {
+        "log": "outputs/run1/matrix/shell-timeout-in-flight.log",
+        "naive_log": "outputs/run1/matrix/shell-timeout-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/shell-timeout-in-flight.trace.jsonl"
+      },
+      "fault": "timeout",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "f3637558c5ad2a7617e72a27d02ed214b4c950da7c66746477a1ebb8b465f3aa",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": null,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "93d12389a4e86f3a1e0ff4cc09301352b80a3f428cf1360a547caecf3627c477",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Wrap the job in `timeout N`; exit 124 is recorded as a call_timeout terminal record.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The slow job is wrapped in `timeout 0.6 sleep 5`."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The first sibling finishes at 0.3 s; the timeout kills the slow job at 0.6 s; the job exits 124."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_timeout for the slow job (exit 124)."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends partial_failure with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Without the `timeout` wrapper the slow job runs to completion and no timeout is ever reported (naive mode: 0 errors reported)."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-cancellation-at-completion.log",
+        "naive_log": "outputs/run1/matrix/threaded-cancellation-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/threaded-cancellation-at-completion.trace.jsonl"
+      },
+      "fault": "cancellation",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 22,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "cancelled",
+        "trace_sha256": "ea866772f17bc7bffc90404759874b9433c9c2466a816fa87d1f53d4b6aa320d",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 1,
+        "end_tick": 22,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "ok",
+        "trace_sha256": "c9e917f51f7fa38a8c5207044ca6ba24b5beb75027b98cbf02fa00d2b5215faa",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Cancel queued calls (report each as cancelled) and let running calls finish; record the rejected cancel as cancel_rejected so the asymmetry is visible.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "One worker, three calls: long-a starts, long-b and quick queue."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "long-a completes at tick 10 and long-b starts; cancel fires at tick 11, when long-b is running and quick is still queued."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_cancelled for quick at tick 11; cancel_rejected for long-b, which completes at tick 22."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends cancelled at tick 22 with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "A cancel path that drops queued calls reports only the calls that already finished (naive mode: 1-2 dropped, 0 call_cancelled events). A cancel of a running call cannot stop it at all: Future.cancel() returns False."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-cancellation-at-issue.log",
+        "naive_log": "outputs/run1/matrix/threaded-cancellation-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/threaded-cancellation-at-issue.trace.jsonl"
+      },
+      "fault": "cancellation",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 10,
+        "errored": 2,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 1,
+        "status": "cancelled",
+        "trace_sha256": "7fd4c0807a1e61ff74900d72c6b4b22db103e8903c1c43261ceee786571cf8af",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 2,
+        "end_tick": 10,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 1,
+        "status": "ok",
+        "trace_sha256": "7f0a4cb7cf5cc94472f23497fe499ab9a5ea7c1d82f0bde083a7632f9738f5ed",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Cancel queued calls (report each as cancelled) and let running calls finish; record the rejected cancel as cancel_rejected so the asymmetry is visible.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "One worker, three calls: long-a starts, long-b and quick queue."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Cancel fires at tick 0: the two queued calls are cancelled; the running call's cancel is rejected (Future.cancel() returns False for a running call)."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_cancelled for long-b and quick; cancel_rejected for long-a."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "long-a completes at tick 10; batch ends cancelled with 1 preserved, 2 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "A cancel path that drops queued calls reports only the calls that already finished (naive mode: 1-2 dropped, 0 call_cancelled events). A cancel of a running call cannot stop it at all: Future.cancel() returns False."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-cancellation-in-flight.log",
+        "naive_log": "outputs/run1/matrix/threaded-cancellation-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/threaded-cancellation-in-flight.trace.jsonl"
+      },
+      "fault": "cancellation",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 10,
+        "errored": 2,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 1,
+        "status": "cancelled",
+        "trace_sha256": "78c8e58b7a1cd92834cd4fdf94a3e698a3309562ce029f3a2be6c356de724072",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 2,
+        "end_tick": 10,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 1,
+        "status": "ok",
+        "trace_sha256": "b72412aca65a90144960cb1447c5380012ad0e692c2a6775998bdadc54b19a90",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Cancel queued calls (report each as cancelled) and let running calls finish; record the rejected cancel as cancel_rejected so the asymmetry is visible.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "One worker, three calls: long-a starts, long-b and quick queue."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Cancel fires at tick 4: the two queued calls are cancelled; the running call's cancel is rejected."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_cancelled for long-b and quick at tick 4; cancel_rejected for long-a."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "long-a completes at tick 10; batch ends cancelled with 1 preserved, 2 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "A cancel path that drops queued calls reports only the calls that already finished (naive mode: 1-2 dropped, 0 call_cancelled events). A cancel of a running call cannot stop it at all: Future.cancel() returns False."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-out-of-order-at-completion.log",
+        "naive_log": "outputs/run1/matrix/threaded-out-of-order-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/threaded-out-of-order-at-completion.trace.jsonl"
+      },
+      "fault": "out-of-order",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "025cc041ce5aa5b4907a0a64c1146981db6d0886140b81fa5d913465b5b669ee",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "025cc041ce5aa5b4907a0a64c1146981db6d0886140b81fa5d913465b5b669ee",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Match every result to its call by tool_call_id only.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Calls are issued slow, fast, mid; three workers."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Calls complete fast, mid, slow."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_end events in completion order fast, mid, slow."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Attribution happens at collection time: by-id is correct (3 preserved); by-position misattributes all 3."
+        }
+      ],
+      "where_results_can_be_lost": "Attributing results by completion position misattributes every result when completion order differs from issue order (naive mode: 3 misattributed at in-flight and at-completion)."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-out-of-order-at-issue.log",
+        "naive_log": "outputs/run1/matrix/threaded-out-of-order-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/threaded-out-of-order-at-issue.trace.jsonl"
+      },
+      "fault": "out-of-order",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "f0bb6380afcc68af38015d636c0763471c6303e4653f9b0cf76221d78bbd2416",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "f0bb6380afcc68af38015d636c0763471c6303e4653f9b0cf76221d78bbd2416",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Match every result to its call by tool_call_id only.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Calls are issued in completion order (fast, mid, slow); three workers, so nothing queues."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Durations are 1, 3, and 5 ticks; calls complete in issue order."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_end events in order fast, mid, slow."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "By-id and by-position collectors agree here (0 misattributed). 3 preserved, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Attributing results by completion position misattributes every result when completion order differs from issue order (naive mode: 3 misattributed at in-flight and at-completion)."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-out-of-order-in-flight.log",
+        "naive_log": "outputs/run1/matrix/threaded-out-of-order-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/threaded-out-of-order-in-flight.trace.jsonl"
+      },
+      "fault": "out-of-order",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "4fbaba317e2686898030f23e2ae527e1bbf3ab57e141aabb20a911426fefd86f",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 5,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 3,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "4fbaba317e2686898030f23e2ae527e1bbf3ab57e141aabb20a911426fefd86f",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Match every result to its call by tool_call_id only.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Calls are issued slow, fast, mid; three workers."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "Durations are 5, 1, and 3 ticks, so the calls complete fast, mid, slow."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_end events in completion order fast, mid, slow."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "By-id collection attributes every result correctly (3 preserved); the position-based collector misattributes all 3."
+        }
+      ],
+      "where_results_can_be_lost": "Attributing results by completion position misattributes every result when completion order differs from issue order (naive mode: 3 misattributed at in-flight and at-completion)."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-partial-failure-at-completion.log",
+        "naive_log": "outputs/run1/matrix/threaded-partial-failure-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/threaded-partial-failure-at-completion.trace.jsonl"
+      },
+      "fault": "partial-failure",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 6,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "0976e2db79dc82d2abe9830c2127fb0b429524124f1723158117d116244f1291",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 1,
+        "end_tick": 4,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 1,
+        "status": "aborted",
+        "trace_sha256": "645c6788ff681c083954a24413b8c59c6e66d645136dfc492a9e7f9ac6efde54",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Let each future carry its own exception; siblings complete and the batch is reported partial_failure.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The failing call is declared with a 4-tick duration, the same tick the last sibling completes."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The failure is raised at tick 4 as the last sibling completes."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_error with is_error: true for the failing call at tick 4."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends partial_failure at tick 4 with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Aborting on the first error (shutdown with cancel_futures=True) drops queued calls and the still-running sibling (naive mode: 1-2 dropped, batch aborted)."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-partial-failure-at-issue.log",
+        "naive_log": "outputs/run1/matrix/threaded-partial-failure-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/threaded-partial-failure-at-issue.trace.jsonl"
+      },
+      "fault": "partial-failure",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 4,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "1923461cbf3fa25ed185b47b45cdbb3ac630b2949b57132ef94910ef4d682dda",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 2,
+        "end_tick": 0,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 0,
+        "status": "aborted",
+        "trace_sha256": "5be9549b822fd090799c0e74c796fa306e51db667b7f8a0de10d599e2045d364",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Let each future carry its own exception; siblings complete and the batch is reported partial_failure.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The failing call is declared with a 0-tick duration; two workers."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The failure is raised at tick 0; per-future isolation keeps the siblings running."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_error with is_error: true for the failing call at tick 0; the worker is freed."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Both siblings complete; batch ends partial_failure at tick 4 with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Aborting on the first error (shutdown with cancel_futures=True) drops queued calls and the still-running sibling (naive mode: 1-2 dropped, batch aborted)."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-partial-failure-in-flight.log",
+        "naive_log": "outputs/run1/matrix/threaded-partial-failure-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/threaded-partial-failure-in-flight.trace.jsonl"
+      },
+      "fault": "partial-failure",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 6,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "7f2357a2b75cbbf6c941a12cfe6647e0920f797eb6a60823f79f338dd91375bd",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 1,
+        "end_tick": 3,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 1,
+        "status": "aborted",
+        "trace_sha256": "83021fd0bb79218790c974c1b19fa0c9029d114403006f312f8f7b44295268b9",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Let each future carry its own exception; siblings complete and the batch is reported partial_failure.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "The failing call is declared with a 3-tick duration; two workers."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The failure is raised at tick 3, mid-batch; per-future isolation keeps the siblings running."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_error with is_error: true for the failing call at tick 3."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Both siblings complete; batch ends partial_failure at tick 4 with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Aborting on the first error (shutdown with cancel_futures=True) drops queued calls and the still-running sibling (naive mode: 1-2 dropped, batch aborted)."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-timeout-at-completion.log",
+        "naive_log": "outputs/run1/matrix/threaded-timeout-at-completion-naive.log",
+        "trace": "outputs/run1/matrix/threaded-timeout-at-completion.trace.jsonl"
+      },
+      "fault": "timeout",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 20,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "f0453064fb4b538aa4e1e4f9aa00610aa114ce5024d01953928ac40f61ed18a7",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 20,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "f0453064fb4b538aa4e1e4f9aa00610aa114ce5024d01953928ac40f61ed18a7",
+        "values_lost": 0
+      },
+      "point": "at-completion",
+      "recovery": "Schedule a per-call deadline when the call starts on a worker; the deadline frees the worker for the next queued call.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Deadline of 20 ticks equals the slow call's 20-tick duration."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The completion event was scheduled before the deadline event, so at tick 20 the completion wins the tie."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_end for the slow call at tick 20: it completes instead of timing out."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Batch ends at tick 20 with status ok, 3 preserved, 0 errored, 0 dropped. Contrast the asyncio dispatcher, where the deadline wins the same tie and the call is reported timeout."
+        }
+      ],
+      "where_results_can_be_lost": "Without a per-call deadline the slow call holds its worker and the batch (naive mode: 0 errors reported, batch ends at tick 20)."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-timeout-at-issue.log",
+        "naive_log": "outputs/run1/matrix/threaded-timeout-at-issue-naive.log",
+        "trace": "outputs/run1/matrix/threaded-timeout-at-issue.trace.jsonl"
+      },
+      "fault": "timeout",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 8,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "2617096207a0a8b66696125959fbfd05b800a10dee13e7b54305a609e3d5a918",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 20,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "f710db1590e603f9cfae25f35dbc126a79a1692025559164c5df6c9e251f70f1",
+        "values_lost": 0
+      },
+      "point": "at-issue",
+      "recovery": "Schedule a per-call deadline when the call starts on a worker; the deadline frees the worker for the next queued call.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Deadline of 2 ticks is scheduled when the slow call starts on a worker."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The deadline fires at tick 2 and frees the worker; the next queued call starts."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_timeout for the slow call at tick 2."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Siblings complete; batch ends partial_failure with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Without a per-call deadline the slow call holds its worker and the batch (naive mode: 0 errors reported, batch ends at tick 20)."
+    },
+    {
+      "component": "threaded",
+      "evidence": {
+        "log": "outputs/run1/matrix/threaded-timeout-in-flight.log",
+        "naive_log": "outputs/run1/matrix/threaded-timeout-in-flight-naive.log",
+        "trace": "outputs/run1/matrix/threaded-timeout-in-flight.trace.jsonl"
+      },
+      "fault": "timeout",
+      "measured_correct": {
+        "dropped": 0,
+        "end_tick": 9,
+        "errored": 1,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 2,
+        "status": "partial_failure",
+        "trace_sha256": "f72d3ca76a92c6496bf862b6dfdab89f1df22fa65e58c2fbd3f9a9b3a45a02a5",
+        "values_lost": 0
+      },
+      "measured_naive": {
+        "dropped": 0,
+        "end_tick": 20,
+        "errored": 0,
+        "issued": 3,
+        "position_misattributed": 0,
+        "preserved": 3,
+        "status": "ok",
+        "trace_sha256": "c7a0f0585bd6cf7aab5d9b52289c4ddaba6db76a71b658d218956b97b1480f36",
+        "values_lost": 0
+      },
+      "point": "in-flight",
+      "recovery": "Schedule a per-call deadline when the call starts on a worker; the deadline frees the worker for the next queued call.",
+      "stages": [
+        {
+          "stage": "issued",
+          "what_happens": "Deadline of 5 ticks is scheduled when the slow call starts."
+        },
+        {
+          "stage": "in-flight",
+          "what_happens": "The deadline fires at tick 5, mid-batch, and frees the worker."
+        },
+        {
+          "stage": "terminal",
+          "what_happens": "call_timeout for the slow call at tick 5."
+        },
+        {
+          "stage": "collected",
+          "what_happens": "Siblings complete; batch ends partial_failure with 2 preserved, 1 errored, 0 dropped."
+        }
+      ],
+      "where_results_can_be_lost": "Without a per-call deadline the slow call holds its worker and the batch (naive mode: 0 errors reported, batch ends at tick 20)."
+    }
+  ],
+  "components": [
+    "asyncio",
+    "threaded",
+    "shell"
+  ],
+  "deadline_tie_note": "When a deadline equals a call's duration, the asyncio dispatcher reports a timeout (the deadline event is scheduled before the wake event) while the threaded dispatcher reports a completion (the completion event is scheduled before the deadline event). Both are deterministic and documented; a caller that assumes one convention for both components will misread the boundary.",
+  "description": "Propagation map: for each fault type (timeout, cancellation, partial failure, out-of-order completion), each component (asyncio dispatcher, threaded dispatcher, shell runner), and each injection point (at-issue, in-flight, at-completion), what happens at each stage (issued -> in-flight -> terminal -> collected), where a result can be lost, and where recovery happens. Every stage description is drawn from the observed matrix cell run named in the cell's evidence; counts are the measured correct-mode and naive-mode results.",
+  "faults": [
+    "timeout",
+    "cancellation",
+    "partial-failure",
+    "out-of-order"
+  ],
+  "points": [
+    "at-issue",
+    "in-flight",
+    "at-completion"
+  ],
+  "stages": [
+    "issued",
+    "in-flight",
+    "terminal",
+    "collected"
+  ],
+  "timing_note": "All ticks are virtual-clock ticks, not wall time, for the asyncio and threaded dispatchers. Shell times are real seconds; only completion order, exit codes, and output digests are asserted, never wall-clock thresholds."
+}

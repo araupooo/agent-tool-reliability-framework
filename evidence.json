@@ -1,0 +1,185 @@
+{
+  "claims": [
+    {
+      "id": "C-01",
+      "log": "outputs/run1/replay-batch-basic.log",
+      "log_sha256": "250a8c632f6ffe872aa8f5a6d4b22a902cd3c0cb7224d30fbc9710e1ba70c6e0",
+      "script": "scripts/run_all.sh (scenarios/run_*.py, harness/replayer.py)",
+      "statement": "All seven asyncio batches record and replay byte-identically, and all four naive-variant traces replay byte-identically.",
+      "traces": {
+        "batch-basic.trace.jsonl": "190c6b631f84181af9e757787c80d1f6adb82bc29cfe307e59565d6d306bff81"
+      }
+    },
+    {
+      "id": "C-02",
+      "log": "outputs/run1/timeout.log",
+      "log_sha256": "2d34a1b54ebdb1474a1ac143446c90407387adc351db74f5293f8f8dc09b5440",
+      "script": "scenarios/run_timeout.py",
+      "statement": "A per-call deadline cuts the slow call at tick 5; the batch ends at tick 6 on the siblings' schedule (status partial_failure).",
+      "traces": {
+        "batch-timeout-naive.trace.jsonl": "923221cc90ded22d90d558f0064963f484dc18badaba40b6ffb079f16aa3420b",
+        "batch-timeout.trace.jsonl": "a67e6f5cfdfa4f69c285c79250d2d99abee1126337d029e1f9f63d01b3f56ba8"
+      }
+    },
+    {
+      "id": "C-03",
+      "log": "outputs/run1/cancellation.log",
+      "log_sha256": "83b23f6ed82501e590e2699595365afc28d1b53920a3b8c4b1279d76e23cafd5",
+      "script": "scenarios/run_cancellation.py",
+      "statement": "Batch cancellation at tick 4 reports a result for every issued call (3/3): the quick call completed, the two in-flight calls are reported cancelled.",
+      "traces": {
+        "batch-cancel-naive.trace.jsonl": "f7c3cab9f1be78fdbb5de3479aa3b8489d19e84f3de33cad51e1a3609d773e30",
+        "batch-cancel.trace.jsonl": "5c7d2e88368f5de00eb0f2bc694d346c81c8d5349d27dec8025a7797f18a8fb1"
+      }
+    },
+    {
+      "id": "C-04",
+      "log": "outputs/run1/partial-failure.log",
+      "log_sha256": "7e6fac0005ef63eeefad516452afea1dbc19ab0052fa3364f4e5430779f2ed20",
+      "script": "scenarios/run_partial_failure.py",
+      "statement": "A failing call is isolated: reported with is_error, both siblings complete, batch status partial_failure, 3/3 results.",
+      "traces": {
+        "batch-partial-naive.trace.jsonl": "3a34dc737d33c5512914e60491bd9efc95e2a3d3d41977b0474bc69425c2be09",
+        "batch-partial.trace.jsonl": "658c96c351dd9bad1832b7c535a07b5ab28876c9864b347817e43c682de8597e"
+      }
+    },
+    {
+      "id": "C-05",
+      "log": "outputs/run1/out-of-order.log",
+      "log_sha256": "2564ceedd7b3e2f6fe12cf031fba184bf77b7630714621cf3aa40bb5d3b1d11a",
+      "script": "scenarios/run_out_of_order.py",
+      "statement": "Out-of-order completions (fast, mid, slow) are matched to calls by tool_call_id; position-based matching misattributes all three results.",
+      "traces": {
+        "batch-reorder.trace.jsonl": "92b7959b3bd18a5de01ebb2028e6f8a45b26a3be3e1063d4d3e034f892e9270b"
+      }
+    },
+    {
+      "id": "C-06",
+      "log": "outputs/run1/repeat-cap.log",
+      "log_sha256": "a8b8a5d6bb63bd53c2a34f36c11ac118d5b0695618f6d03781700ef5ff4471ed",
+      "script": "scenarios/run_repeat_cap.py",
+      "statement": "The fourth identical call in one turn is refused without running (cap 3); it is still reported (4/4 results).",
+      "traces": {
+        "batch-repeat.trace.jsonl": "cc1009b2b26ccd8b2d899cd43d5bf6ad154155749614ffa16248d570c7e3d01d"
+      }
+    },
+    {
+      "id": "C-07",
+      "log": "outputs/run1/nested-timing.log",
+      "log_sha256": "76aa64d43bcbcf5b5ecce24045812174050ccd6e8d6352401c23c38447e43185",
+      "script": "scenarios/run_nested_timing.py",
+      "statement": "The nested-call timing guard emits no nested timing events; without the guard the nested interval (ticks 2..5) lies strictly inside the outer interval (ticks 0..6).",
+      "traces": {
+        "batch-nested-unguarded.trace.jsonl": "0a39af566402a6fae9e3220a6fb546a95f9a5a59949475400ccc00eeeb43b464",
+        "batch-nested.trace.jsonl": "5b17ddcdb9115cd37bcd7c219d6006c92f7c6dcf5ae83e6521e973dab33f69d2"
+      }
+    },
+    {
+      "id": "C-08",
+      "log": "outputs/run1/shell.log",
+      "log_sha256": "d2bccd7c2ed797c8c9c6a66c19262cfe60453ab284aaee6138192c618d2d902a",
+      "script": "components/shell_runner/run_parallel.sh",
+      "statement": "The shell runner's four real parallel processes complete in the manifest's declared order with matching exit codes and output digests; its trace replays byte-identically.",
+      "traces": {
+        "shell/batch-shell.trace.jsonl": "cd7a310e56bd06be839c84ede976949430880a8131ef8d8e663eea68ae5da882"
+      }
+    },
+    {
+      "id": "C-09",
+      "log": "outputs/run2-clean/clean-reproduce.log",
+      "log_sha256": "6e7674df47eabbc74cd470e599acd14393f96e6d46f2ba9dcd6e2b92e557f048",
+      "script": "scripts/clean_reproduce.sh",
+      "statement": "A clean-environment reproduction from a fresh copy produces outputs byte-identical to the first run.",
+      "traces": {}
+    },
+    {
+      "id": "C-10",
+      "log": "findings.md",
+      "log_sha256": "e01aa2d699b20866b1bc22c0c32e94e72ae6b487f3b4d4b97f44b8542e12dabb",
+      "script": "source inspection (see citations.md section 4)",
+      "statement": "The harness rules match the inspected reference implementation (CorbanuTerminal parallel.rs, commit 7b5b368f): parallel gate, cancellation reporting, nested timing guard, 3-call repeat cap.",
+      "traces": {}
+    },
+    {
+      "id": "C-11",
+      "log": "outputs/run1/replay-batch-threaded-basic.log",
+      "log_sha256": "ae98f65fcd3e3746bee87e184cf40a3adadada63eccb3fdf6367b0155035d4b1",
+      "script": "scripts/run_all.sh (scenarios/run_threaded_*.py, components/threaded_dispatcher/replayer.py)",
+      "statement": "All seven threaded batches record and replay byte-identically, and all four naive-variant traces replay byte-identically.",
+      "traces": {
+        "batch-threaded-basic.trace.jsonl": "9d158d043ab677fabd7e519d650b658646de8fec7912b6afcaae0da881384092"
+      }
+    },
+    {
+      "id": "C-12",
+      "log": "outputs/run1/threaded-cancel.log",
+      "log_sha256": "91040ef39383d808602ba17aaa70daaa61f4ee6f0a1bcb229b4dd497d79013b2",
+      "script": "scenarios/run_threaded_cancel.py",
+      "statement": "Threaded cancellation at tick 4 cancels the two queued calls and rejects the running call's cancel (Future.cancel() returns False); 3/3 results are reported, 0 dropped.",
+      "traces": {
+        "batch-threaded-cancel-naive.trace.jsonl": "55e18032ff4b9638c42e3cdd4cee5813f0730e2c7afb76abe66572a7a954baf8",
+        "batch-threaded-cancel.trace.jsonl": "995253bb3a1eeb628859661543882273680f63b3f15e847e7aa0e889e934b00c"
+      }
+    },
+    {
+      "id": "C-13",
+      "log": "outputs/run1/threaded-wait-timeout.log",
+      "log_sha256": "f4bfae8a2f8a12227a8c0841f0b31ee21d5caafb50c9e004e0055879fec00a8d",
+      "script": "scenarios/run_threaded_wait_timeout.py",
+      "statement": "A collector wait() timeout at tick 4 does not stop the work: both calls complete late (ticks 8, 10) and are reconciled (2/2 preserved); discarding late results loses both values.",
+      "traces": {
+        "batch-threaded-wait-timeout-naive.trace.jsonl": "5b6d178eaf978b663521088ff5c97bb3688dc58a73ac6e9a629c43fd79c0c41e",
+        "batch-threaded-wait-timeout.trace.jsonl": "b43b3d79ad3a5021e28b659bf5b313b936e83408fee4fb3a92fd0034a9dbb075"
+      }
+    },
+    {
+      "id": "C-14",
+      "log": "outputs/run1/corpus.log",
+      "log_sha256": "cb6608805ae2861c5e994ebfdacbdcb3ce83808742615204d1d538bddf3f0cd3",
+      "script": "scripts/run_corpus.py",
+      "statement": "The network-scale corpus replays byte-identically: 48 traces, 214 issued calls, 163 preserved, 51 errored, 0 dropped.",
+      "traces": {
+        "corpus/corpus-summary.json": "1af4c1adf79ce5f15a03929845f00f4df84bc45b940e20d309120543b1bcb3fd"
+      }
+    },
+    {
+      "id": "C-15",
+      "log": "outputs/run1/matrix.log",
+      "log_sha256": "b250c12a43af5d28c63595afc1befd9c1c9ca5e48ec5b9a342a24a375968bdd4",
+      "script": "scripts/run_matrix.py",
+      "statement": "The fault-injection matrix passes 36/36 correct-mode cells (4 faults x 3 components x 3 injection points) with 0 silent drops across 108 issued calls.",
+      "traces": {
+        "matrix/matrix-results.json": "95e70b02f64e1aa7011c1f6cae8d8246e5a2817b1887a83da57e2c58ace92584"
+      }
+    },
+    {
+      "id": "C-16",
+      "log": "outputs/run1/matrix/matrix-results.json",
+      "log_sha256": "95e70b02f64e1aa7011c1f6cae8d8246e5a2817b1887a83da57e2c58ace92584",
+      "script": "scripts/build_propagation_map.py",
+      "statement": "The propagation map covers all 36 matrix cells with stage narratives, measured correct/naive counts, and evidence paths.",
+      "traces": {
+        "propagation-map.json": "c4f034e65979b97cd27ced4b1edda4f8f232a2b24efd89661d8a3fc2c0330fc3"
+      }
+    },
+    {
+      "id": "C-17",
+      "log": "outputs/run1/threaded-live-probe.log",
+      "log_sha256": "ebc9e06655b22e88436588057ac51ee09c08b9bf1f9af7684ea9735c1d1d0d01",
+      "script": "components/threaded_dispatcher/probe_live.py",
+      "statement": "A live probe against a real ThreadPoolExecutor confirms the modelled semantics: cancel() returns True for a queued future and False for a running one; wait(timeout) cancels nothing; shutdown(cancel_futures=True) cancels queued futures only.",
+      "traces": {}
+    },
+    {
+      "id": "C-18",
+      "log": "outputs/run1/matrix.log",
+      "log_sha256": "b250c12a43af5d28c63595afc1befd9c1c9ca5e48ec5b9a342a24a375968bdd4",
+      "script": "scripts/run_matrix.py (cells asyncio/threaded timeout at-completion)",
+      "statement": "Deadline == duration behaves differently per component: the asyncio dispatcher reports a timeout, the threaded dispatcher reports a completion (both deterministic, both replayed byte-identically).",
+      "traces": {
+        "matrix/asyncio-timeout-at-completion.trace.jsonl": "78abdd38c7e64be6ea8318d7540bd0f2f986c9bc1029509836177fb09bb0591e",
+        "matrix/threaded-timeout-at-completion.trace.jsonl": "f0453064fb4b538aa4e1e4f9aa00610aa114ce5024d01953928ac40f61ed18a7"
+      }
+    }
+  ]
+}
