@@ -1,0 +1,28 @@
+{"batch_id":"corpus-threaded-15","call_ids":["call-c1","call-c2","call-c3","call-c4","call-c5","call-c6","call-c7","call-c8"],"max_workers":3,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"long_task","tool_call_id":"call-c1","type":"call_start","worker_slot":0}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"fetch_url","tool_call_id":"call-c2","type":"call_start","worker_slot":1}
+{"args_digest":"0bb3d42fac472151177c75096928bfc5a03f8967a33152196067f148c332ebb2","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"slow_query","tool_call_id":"call-c3","type":"call_start","worker_slot":2}
+{"queue_position":0,"seq":4,"tick":0,"tool":"long_task","tool_call_id":"call-c4","type":"call_queued"}
+{"queue_position":1,"seq":5,"tick":0,"tool":"read_file","tool_call_id":"call-c5","type":"call_queued"}
+{"queue_position":2,"seq":6,"tick":0,"tool":"read_file","tool_call_id":"call-c6","type":"call_queued"}
+{"queue_position":3,"seq":7,"tick":0,"tool":"fetch_url","tool_call_id":"call-c7","type":"call_queued"}
+{"queue_position":4,"seq":8,"tick":0,"tool":"long_task","tool_call_id":"call-c8","type":"call_queued"}
+{"parent_tool_call_id":null,"result_digest":"e2d4fbea8340fd104c5180b83bc229184a46375b96e12b6ab7588021bfc3fe6f","seq":9,"status":"ok","tick":1,"tool_call_id":"call-c2","type":"call_end"}
+{"args_digest":"3642dfa872320fc3db17f95a04ad6889f66dfba7fef83ae598a342ec1a121ecc","parent_tool_call_id":null,"seq":10,"tick":1,"tool":"long_task","tool_call_id":"call-c4","type":"call_start","worker_slot":2}
+{"seq":11,"status":"cancelled","tick":3,"tool_call_id":"call-c5","type":"call_cancelled"}
+{"seq":12,"status":"cancelled","tick":3,"tool_call_id":"call-c6","type":"call_cancelled"}
+{"seq":13,"status":"cancelled","tick":3,"tool_call_id":"call-c7","type":"call_cancelled"}
+{"seq":14,"status":"cancelled","tick":3,"tool_call_id":"call-c8","type":"call_cancelled"}
+{"reason":"Future.cancel() returns False for a running call","seq":15,"status":"running","tick":3,"tool_call_id":"call-c1","type":"cancel_rejected"}
+{"reason":"Future.cancel() returns False for a running call","seq":16,"status":"running","tick":3,"tool_call_id":"call-c3","type":"cancel_rejected"}
+{"reason":"Future.cancel() returns False for a running call","seq":17,"status":"running","tick":3,"tool_call_id":"call-c4","type":"cancel_rejected"}
+{"reason":"collector wait() timed out; work continues","seq":18,"status":"timeout","tick":4,"tool_call_id":"call-c1","type":"call_timeout"}
+{"reason":"collector wait() timed out; work continues","seq":19,"status":"timeout","tick":4,"tool_call_id":"call-c3","type":"call_timeout"}
+{"reason":"collector wait() timed out; work continues","seq":20,"status":"timeout","tick":4,"tool_call_id":"call-c4","type":"call_timeout"}
+{"collection_closed_tick":4,"result_digest":"043c198893a89e718b15ef8d051d5d9508b2978ebaea2e0b78116aa891c01abe","seq":21,"status":"ok","tick":6,"tool_call_id":"call-c3","type":"call_late_result"}
+{"parent_tool_call_id":null,"result_digest":"043c198893a89e718b15ef8d051d5d9508b2978ebaea2e0b78116aa891c01abe","seq":22,"status":"ok","tick":6,"tool_call_id":"call-c3","type":"call_end"}
+{"collection_closed_tick":4,"result_digest":"f39f19a3d6164c16c9fae345fd4fb9893a25d60df1bb9efc3fa4a1503ab6506a","seq":23,"status":"ok","tick":12,"tool_call_id":"call-c1","type":"call_late_result"}
+{"parent_tool_call_id":null,"result_digest":"f39f19a3d6164c16c9fae345fd4fb9893a25d60df1bb9efc3fa4a1503ab6506a","seq":24,"status":"ok","tick":12,"tool_call_id":"call-c1","type":"call_end"}
+{"collection_closed_tick":4,"result_digest":"fd4cd4189d641c8ce5c2ff2f29a5129a7abc97bf4e7ce3c1d1b468035b5913a6","seq":25,"status":"ok","tick":13,"tool_call_id":"call-c4","type":"call_late_result"}
+{"parent_tool_call_id":null,"result_digest":"fd4cd4189d641c8ce5c2ff2f29a5129a7abc97bf4e7ce3c1d1b468035b5913a6","seq":26,"status":"ok","tick":13,"tool_call_id":"call-c4","type":"call_end"}
+{"batch_id":"corpus-threaded-15","cancelled":4,"collection_closed_tick":4,"completed":4,"failed":0,"late_results_reconciled":3,"refused":0,"seq":27,"status":"cancelled","tick":13,"type":"batch_end","values_lost":0}
