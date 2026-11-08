@@ -1,0 +1,18 @@
+== scenario: threaded cancellation (1 worker, cancel at tick 4) ==
+batch: batch-threaded-cancel
+status: cancelled
+end_tick: 10
+trace_sha256: 995253bb3a1eeb628859661543882273680f63b3f15e847e7aa0e889e934b00c
+PASS: two queued calls are cancelled -- count=2
+PASS: the cancelled calls are exactly the two queued ones
+PASS: cancel of the running call is rejected (Future.cancel() returns False)
+PASS: running call completes normally at tick 10
+PASS: batch status is cancelled -- cancelled
+PASS: batch ends at tick 10, when the running call finishes
+PASS: one result reported per call issued -- 3/3
+PASS: replay is byte-identical to the recorded trace
+naive (drop on cancel) results_reported: 1/3
+PASS: naive run: only the finished call is reported
+PASS: naive run: both cancelled calls are silently dropped
+PASS: naive run: no call_cancelled event
+scenario threaded cancellation: ALL PASS

@@ -1,0 +1,11 @@
+== scenario: threaded out-of-order completion (thread-pool dispatcher) ==
+batch: batch-threaded-reorder
+status: ok
+end_tick: 5
+trace_sha256: 3528bedd19cdb7c2e463c56dc79cc3b757d13f3d456ca28eaf21f813ae415bc7
+PASS: completion order is fast, mid, slow (issue order was slow, fast, mid) -- call-t-fast,call-t-mid,call-t-slow
+PASS: by-id collector returns the correct result for every call
+PASS: position-based collector misattributes all three results (reproduced failure)
+PASS: all 3 results preserved, zero drops
+PASS: replay is byte-identical to the recorded trace
+scenario threaded out-of-order: ALL PASS

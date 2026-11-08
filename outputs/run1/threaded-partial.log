@@ -1,0 +1,17 @@
+== scenario: threaded partial failure (thread-pool dispatcher) ==
+batch: batch-threaded-partial
+status: partial_failure
+end_tick: 6
+trace_sha256: 4fc7a924ab41a88043a1da76e28e569f8a48095d300d3818b27359d80a5a719c
+PASS: exactly one error, for the failing call -- count=1
+PASS: error event carries is_error: true
+PASS: batch status is partial_failure -- partial_failure
+PASS: sibling ok-a completes
+PASS: sibling ok-c completes
+PASS: one result reported per call issued -- 3/3
+PASS: replay is byte-identical to the recorded trace
+naive (abort on first error) status: aborted
+PASS: naive run: batch aborts on the first error
+PASS: naive run: the still-running sibling is dropped -- dropped=1
+PASS: naive run: the running sibling never reports
+scenario threaded partial failure: ALL PASS

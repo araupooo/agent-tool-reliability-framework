@@ -1,0 +1,13 @@
+== scenario: threaded queue saturation (1 worker, 4 calls, cancel at tick 3) ==
+batch: batch-threaded-queue
+status: cancelled
+end_tick: 4
+trace_sha256: 374d61ad4f40f43bcf9c7bd7fb065297851321ecfa795a43ba0ef41718594b5e
+PASS: three calls queue behind the single worker
+PASS: exactly the two still-queued calls are cancelled at tick 3
+PASS: the running call's cancel is rejected; it completes at tick 4
+PASS: both started calls complete
+PASS: started results preserved, cancelled calls reported, zero drops
+PASS: batch ends at tick 4 -- end_tick=4
+PASS: replay is byte-identical to the recorded trace
+scenario threaded queue saturation: ALL PASS

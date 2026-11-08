@@ -1,0 +1,21 @@
+== scenario: timeout (asyncio dispatcher) ==
+batch: batch-timeout
+status: partial_failure
+end_tick: 6
+trace_sha256: a67e6f5cfdfa4f69c285c79250d2d99abee1126337d029e1f9f63d01b3f56ba8
+PASS: exactly one timeout, for the slow call -- count=1
+PASS: timeout fires at the 5-tick deadline -- tick=5
+PASS: timeout event carries the deadline
+PASS: batch status is partial_failure -- partial_failure
+PASS: batch ends at tick 6, on the siblings' schedule -- end_tick=6
+PASS: sibling read_file completes
+PASS: sibling compute_hash completes
+PASS: slow call reported as timeout
+PASS: one result reported per call issued -- 3/3
+PASS: replay is byte-identical to the recorded trace
+naive (no deadline) end_tick: 20
+naive (no deadline) status: ok
+PASS: naive run: batch held to tick 20 by the slow call (reproduced failure) -- end_tick=20
+PASS: naive run: slow call runs to completion instead of timing out
+PASS: naive run: no timeout event is emitted
+scenario timeout: ALL PASS
