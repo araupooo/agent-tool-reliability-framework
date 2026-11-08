@@ -1,0 +1,7 @@
+{"batch_id":"batch-threaded-cancel","call_ids":["call-t-long-a","call-t-long-b","call-t-quick"],"max_workers":1,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"24609d9a25afa846a09d4b3e5a079e4b7c1e9bb726d0578765c924896cde2b1b","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"long_task","tool_call_id":"call-t-long-a","type":"call_start","worker_slot":0}
+{"queue_position":0,"seq":2,"tick":0,"tool":"long_task","tool_call_id":"call-t-long-b","type":"call_queued"}
+{"queue_position":1,"seq":3,"tick":0,"tool":"read_file","tool_call_id":"call-t-quick","type":"call_queued"}
+{"reason":"Future.cancel() returns False for a running call","seq":4,"status":"running","tick":4,"tool_call_id":"call-t-long-a","type":"cancel_rejected"}
+{"parent_tool_call_id":null,"result_digest":"ef68da432e640be3fe104d6f241f3cde54e758208ef887c294a63ffa4dc55746","seq":5,"status":"ok","tick":10,"tool_call_id":"call-t-long-a","type":"call_end"}
+{"batch_id":"batch-threaded-cancel","cancelled":0,"collection_closed_tick":null,"completed":1,"failed":0,"late_results_reconciled":0,"refused":0,"seq":6,"status":"ok","tick":10,"type":"batch_end","values_lost":0}

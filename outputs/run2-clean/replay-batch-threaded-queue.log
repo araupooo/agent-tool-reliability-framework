@@ -1,0 +1,6 @@
+batch: batch-threaded-queue
+replay_status: cancelled
+replay_end_tick: 4
+replay_events: 12
+replay_trace_sha256: 374d61ad4f40f43bcf9c7bd7fb065297851321ecfa795a43ba0ef41718594b5e
+replay: MATCH (byte-identical)

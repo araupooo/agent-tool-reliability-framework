@@ -1,0 +1,44 @@
+ok: basic
+ok: timeout
+ok: cancellation
+ok: partial-failure
+ok: out-of-order
+ok: repeat-cap
+ok: nested-timing
+ok: shell
+ok: threaded-basic
+ok: threaded-cancel
+ok: threaded-timeout
+ok: threaded-partial
+ok: threaded-out-of-order
+ok: threaded-wait-timeout
+ok: threaded-queue
+ok: threaded-live-probe
+ok: corpus
+ok: matrix
+ok: replay-batch-basic
+ok: replay-batch-timeout
+ok: replay-batch-cancel
+ok: replay-batch-partial
+ok: replay-batch-reorder
+ok: replay-batch-repeat
+ok: replay-batch-nested
+ok: replay-timeout-naive
+ok: replay-cancel-naive
+ok: replay-partial-naive
+ok: replay-nested-unguarded
+ok: replay-batch-threaded-basic
+ok: replay-batch-threaded-cancel
+ok: replay-batch-threaded-timeout
+ok: replay-batch-threaded-partial
+ok: replay-batch-threaded-reorder
+ok: replay-batch-threaded-queue
+ok: replay-batch-threaded-wait-timeout
+ok: replay-threaded-cancel-naive
+ok: replay-threaded-timeout-naive
+ok: replay-threaded-partial-naive
+ok: replay-threaded-wait-timeout-naive
+ok: shell-replay
+ok: shell trace replay is byte-identical
+run_all: ALL PASS
+clean reproduction: MATCH (run1 and run2-clean are byte-identical)

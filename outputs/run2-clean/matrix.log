@@ -1,0 +1,39 @@
+== matrix: 36 cells ==
+matrix asyncio-cancellation-at-completion: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=2 errored=0 dropped=1 values_lost=0 misattributed=0
+matrix asyncio-cancellation-at-issue: PASS preserved=0 errored=3 dropped=0 (expected 0/3/0) naive: preserved=0 errored=0 dropped=3 values_lost=0 misattributed=0
+matrix asyncio-cancellation-in-flight: PASS preserved=1 errored=2 dropped=0 (expected 1/2/0) naive: preserved=1 errored=0 dropped=2 values_lost=0 misattributed=0
+matrix asyncio-out-of-order-at-completion: PASS preserved=3 errored=0 dropped=0 (expected 3/0/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=3
+matrix asyncio-out-of-order-at-issue: PASS preserved=3 errored=0 dropped=0 (expected 3/0/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix asyncio-out-of-order-in-flight: PASS preserved=3 errored=0 dropped=0 (expected 3/0/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=3
+matrix asyncio-partial-failure-at-completion: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=2 errored=0 dropped=1 values_lost=0 misattributed=0
+matrix asyncio-partial-failure-at-issue: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=0 errored=0 dropped=3 values_lost=0 misattributed=0
+matrix asyncio-partial-failure-in-flight: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=1 errored=0 dropped=2 values_lost=0 misattributed=0
+matrix asyncio-timeout-at-completion: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix asyncio-timeout-at-issue: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix asyncio-timeout-in-flight: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix shell-cancellation-at-completion: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=2 errored=0 dropped=1 values_lost=0 misattributed=0
+matrix shell-cancellation-at-issue: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=2 errored=0 dropped=1 values_lost=0 misattributed=0
+matrix shell-cancellation-in-flight: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=2 errored=0 dropped=1 values_lost=0 misattributed=0
+matrix shell-out-of-order-at-completion: PASS preserved=3 errored=0 dropped=0 (expected 3/0/0) naive: preserved=0 errored=0 dropped=0 values_lost=0 misattributed=3
+matrix shell-out-of-order-at-issue: PASS preserved=3 errored=0 dropped=0 (expected 3/0/0) naive: preserved=0 errored=0 dropped=0 values_lost=0 misattributed=3
+matrix shell-out-of-order-in-flight: PASS preserved=3 errored=0 dropped=0 (expected 3/0/0) naive: preserved=0 errored=0 dropped=0 values_lost=0 misattributed=3
+matrix shell-partial-failure-at-completion: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=2 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix shell-partial-failure-at-issue: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=2 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix shell-partial-failure-in-flight: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=2 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix shell-timeout-at-completion: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix shell-timeout-at-issue: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix shell-timeout-in-flight: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix threaded-cancellation-at-completion: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=2 errored=0 dropped=1 values_lost=0 misattributed=0
+matrix threaded-cancellation-at-issue: PASS preserved=1 errored=2 dropped=0 (expected 1/2/0) naive: preserved=1 errored=0 dropped=2 values_lost=0 misattributed=0
+matrix threaded-cancellation-in-flight: PASS preserved=1 errored=2 dropped=0 (expected 1/2/0) naive: preserved=1 errored=0 dropped=2 values_lost=0 misattributed=0
+matrix threaded-out-of-order-at-completion: PASS preserved=3 errored=0 dropped=0 (expected 3/0/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=3
+matrix threaded-out-of-order-at-issue: PASS preserved=3 errored=0 dropped=0 (expected 3/0/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix threaded-out-of-order-in-flight: PASS preserved=3 errored=0 dropped=0 (expected 3/0/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=3
+matrix threaded-partial-failure-at-completion: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=1 errored=1 dropped=1 values_lost=0 misattributed=0
+matrix threaded-partial-failure-at-issue: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=0 errored=1 dropped=2 values_lost=0 misattributed=0
+matrix threaded-partial-failure-in-flight: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=1 errored=1 dropped=1 values_lost=0 misattributed=0
+matrix threaded-timeout-at-completion: PASS preserved=3 errored=0 dropped=0 (expected 3/0/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix threaded-timeout-at-issue: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix threaded-timeout-in-flight: PASS preserved=2 errored=1 dropped=0 (expected 2/1/0) naive: preserved=3 errored=0 dropped=0 values_lost=0 misattributed=0
+matrix totals: 36/36 correct cells pass; correct-mode dropped total: 0
+matrix: ALL PASS

@@ -1,0 +1,8 @@
+{"batch_id":"batch-threaded-wait-timeout","call_ids":["call-t-w1","call-t-w2"],"max_workers":2,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"1b106a1d21346d05a7089cb8ad861e3599ee21d96fcfd7a974bdb7479a9bd9ce","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"long_task","tool_call_id":"call-t-w1","type":"call_start","worker_slot":0}
+{"args_digest":"9eefeeb028e796e5452263a970e1edb68dd9e321570f8d5eca220f9e251189b0","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"long_task","tool_call_id":"call-t-w2","type":"call_start","worker_slot":1}
+{"reason":"collector wait() timed out; work continues","seq":3,"status":"timeout","tick":4,"tool_call_id":"call-t-w1","type":"call_timeout"}
+{"reason":"collector wait() timed out; work continues","seq":4,"status":"timeout","tick":4,"tool_call_id":"call-t-w2","type":"call_timeout"}
+{"collection_closed_tick":4,"result_digest":"f649ff32cee2f0717e367906856302c3e17bec65e8c152d83fd8bd6245d978d3","seq":5,"status":"discarded","tick":8,"tool_call_id":"call-t-w1","type":"call_late_result"}
+{"collection_closed_tick":4,"result_digest":"bc526059f717dc63dbf9594025df59ab119ebf715046b81d8f926574b0a55468","seq":6,"status":"discarded","tick":10,"tool_call_id":"call-t-w2","type":"call_late_result"}
+{"batch_id":"batch-threaded-wait-timeout","cancelled":0,"collection_closed_tick":4,"completed":0,"failed":2,"late_results_reconciled":0,"refused":0,"seq":7,"status":"partial_failure","tick":10,"type":"batch_end","values_lost":2}

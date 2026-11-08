@@ -1,0 +1,6 @@
+batch: batch-threaded-partial
+replay_status: partial_failure
+replay_end_tick: 6
+replay_events: 9
+replay_trace_sha256: 4fc7a924ab41a88043a1da76e28e569f8a48095d300d3818b27359d80a5a719c
+replay: MATCH (byte-identical)

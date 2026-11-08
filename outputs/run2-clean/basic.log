@@ -1,0 +1,16 @@
+== scenario: basic record/replay (asyncio dispatcher) ==
+batch: batch-basic
+status: ok
+end_tick: 4
+events: 8
+trace_sha256: 190c6b631f84181af9e757787c80d1f6adb82bc29cfe307e59565d6d306bff81
+PASS: batch status is ok -- ok
+PASS: batch ends at tick 4 -- end_tick=4
+PASS: completion order is hash, read, fetch (duration order, not issue order) -- call-hash-1,call-read-1,call-fetch-1
+PASS: one result reported per call issued -- 3/3
+PASS: args digest matches independent recomputation -- c3cf6dfe9545f06a
+PASS: result digest matches fixture for call-read-1
+PASS: result digest matches fixture for call-fetch-1
+PASS: result digest matches fixture for call-hash-1
+PASS: replay is byte-identical to the recorded trace
+scenario basic: ALL PASS

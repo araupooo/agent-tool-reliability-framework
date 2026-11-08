@@ -1,0 +1,19 @@
+== scenario: out-of-order completion (asyncio dispatcher) ==
+batch: batch-reorder
+status: ok
+end_tick: 5
+trace_sha256: 92b7959b3bd18a5de01ebb2028e6f8a45b26a3be3e1063d4d3e034f892e9270b
+PASS: calls start in issue order -- call-slow-1,call-fast-1,call-mid-1
+PASS: calls complete in duration order, not issue order -- call-fast-1,call-mid-1,call-slow-1
+PASS: completion order recorded in summary
+PASS: batch status is ok -- ok
+PASS: by-id: slow call gets slow-result
+PASS: by-id: fast call gets fast-result
+PASS: by-id: mid call gets mid-result
+by-position mapping: {'call-slow-1': 'fast-result', 'call-fast-1': 'mid-result', 'call-mid-1': 'slow-result'}
+PASS: by-position (buggy): slow call wrongly gets fast-result (reproduced failure) -- fast-result
+PASS: by-position (buggy): fast call wrongly gets mid-result -- mid-result
+PASS: by-position (buggy): mid call wrongly gets slow-result -- slow-result
+PASS: by-position mapping differs from the correct by-id mapping
+PASS: replay is byte-identical to the recorded trace
+scenario out-of-order: ALL PASS
