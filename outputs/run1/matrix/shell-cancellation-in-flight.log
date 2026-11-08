@@ -1,0 +1,13 @@
+== matrix cell: shell/cancellation/in-flight ==
+completion_order: call-sh-b,call-sh-a,call-sh-c
+issued: 3
+preserved: 2
+errored: 1
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+status: cancelled
+events: 8
+trace_sha256: 04078bba7b1c91d0d3b0b926c922d65ae636c7641d6d729ce23aa18498101603
+trace_file: outputs/run1/matrix/shell-cancellation-in-flight/cell.trace.jsonl
+cell shell/cancellation/in-flight: DONE

@@ -1,0 +1,13 @@
+== matrix cell: shell/partial-failure/at-completion ==
+completion_order: call-sh-b,call-sh-a,call-sh-c
+issued: 3
+preserved: 2
+errored: 1
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+status: partial_failure
+events: 8
+trace_sha256: d1d689cabab17a8cf080e8762276e98dae0449a26a441aa8b3e074500a5895c2
+trace_file: outputs/run1/matrix/shell-partial-failure-at-completion/cell.trace.jsonl
+cell shell/partial-failure/at-completion: DONE

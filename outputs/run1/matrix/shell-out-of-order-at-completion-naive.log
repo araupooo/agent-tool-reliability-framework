@@ -1,0 +1,14 @@
+== matrix cell: shell/out-of-order/at-completion (naive) ==
+completion_order: call-sh-b,call-sh-a,call-sh-c
+by-position attribution: alpha->call-sh-b, beta->call-sh-c, gamma->call-sh-a (all misattributed)
+issued: 3
+preserved: 0
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 3
+status: ok
+events: 8
+trace_sha256: 073155c4cea887d4edca5426b4a3a76f159b3aff6a572a6940e76015121017d0
+trace_file: outputs/run1/matrix/shell-out-of-order-at-completion-naive/cell.trace.jsonl
+cell shell/out-of-order/at-completion: DONE

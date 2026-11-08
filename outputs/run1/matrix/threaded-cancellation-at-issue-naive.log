@@ -1,0 +1,13 @@
+== matrix cell (naive): threaded/cancellation/at-issue ==
+batch: matrix-threaded-cancellation-at-issue
+status: ok
+end_tick: 10
+events: 7
+issued: 3
+preserved: 1
+errored: 0
+dropped: 2
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-long-a
+trace_sha256: 7f0a4cb7cf5cc94472f23497fe499ab9a5ea7c1d82f0bde083a7632f9738f5ed

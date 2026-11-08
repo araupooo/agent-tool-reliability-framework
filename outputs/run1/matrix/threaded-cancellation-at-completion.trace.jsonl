@@ -1,0 +1,10 @@
+{"batch_id":"matrix-threaded-cancellation-at-completion","call_ids":["call-m-long-a","call-m-long-b","call-m-quick"],"max_workers":1,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"12d3698ac5578360e20da3c13a4501fc8026d02380c2c52e05904ad36a095bca","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"long_task","tool_call_id":"call-m-long-a","type":"call_start","worker_slot":0}
+{"queue_position":0,"seq":2,"tick":0,"tool":"long_task","tool_call_id":"call-m-long-b","type":"call_queued"}
+{"queue_position":1,"seq":3,"tick":0,"tool":"read_file","tool_call_id":"call-m-quick","type":"call_queued"}
+{"parent_tool_call_id":null,"result_digest":"ef68da432e640be3fe104d6f241f3cde54e758208ef887c294a63ffa4dc55746","seq":4,"status":"ok","tick":10,"tool_call_id":"call-m-long-a","type":"call_end"}
+{"args_digest":"a7c2c815ca1b7c961e0ea2e59a451be9e91f41393a36f15b36eb5a80941de5a2","parent_tool_call_id":null,"seq":5,"tick":10,"tool":"long_task","tool_call_id":"call-m-long-b","type":"call_start","worker_slot":0}
+{"seq":6,"status":"cancelled","tick":11,"tool_call_id":"call-m-quick","type":"call_cancelled"}
+{"reason":"Future.cancel() returns False for a running call","seq":7,"status":"running","tick":11,"tool_call_id":"call-m-long-b","type":"cancel_rejected"}
+{"parent_tool_call_id":null,"result_digest":"4fb01687bf2ca3a42c1a1cd82d2a42bace21d300a507a9239b8b452e4b115125","seq":8,"status":"ok","tick":22,"tool_call_id":"call-m-long-b","type":"call_end"}
+{"batch_id":"matrix-threaded-cancellation-at-completion","cancelled":1,"collection_closed_tick":null,"completed":2,"failed":0,"late_results_reconciled":0,"refused":0,"seq":9,"status":"cancelled","tick":22,"type":"batch_end","values_lost":0}

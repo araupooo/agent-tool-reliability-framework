@@ -1,0 +1,13 @@
+== matrix cell (naive): threaded/timeout/at-completion ==
+batch: matrix-threaded-timeout-at-completion
+status: ok
+end_tick: 20
+events: 9
+issued: 3
+preserved: 3
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-read,call-m-hash,call-m-slow
+trace_sha256: f0453064fb4b538aa4e1e4f9aa00610aa114ce5024d01953928ac40f61ed18a7

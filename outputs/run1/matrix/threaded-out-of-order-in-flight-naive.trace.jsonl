@@ -1,0 +1,8 @@
+{"batch_id":"matrix-threaded-out-of-order-in-flight","call_ids":["call-m-slow","call-m-fast","call-m-mid"],"max_workers":3,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"7a02e8f4d45bd7ebcd634c41f0884f572f36a93db7934b0b7e7d4ff7633b4dc8","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"slow_query","tool_call_id":"call-m-slow","type":"call_start","worker_slot":0}
+{"args_digest":"a17b8e0634caeb29534c2e21025dac29d271286d7ce5a8b0a6436d4bd73a3c25","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"compute_hash","tool_call_id":"call-m-fast","type":"call_start","worker_slot":1}
+{"args_digest":"2882881be74da873ceef8c04d0257372bb14dda55fe9f81b2bdb982df90f2cba","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"read_file","tool_call_id":"call-m-mid","type":"call_start","worker_slot":2}
+{"parent_tool_call_id":null,"result_digest":"d1644780e80f8d91d1e57e818c71e2ed727b5cd9d00bf5fcee3ed2a24df6d1db","seq":4,"status":"ok","tick":1,"tool_call_id":"call-m-fast","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"2d52fa46cb8364073c77a13511f989ff58d850ce2108d572a4f2868bf8ec2138","seq":5,"status":"ok","tick":3,"tool_call_id":"call-m-mid","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"5ba30aadfe0f71d836c2191b75270906c0bf8032a11ecc3a6531396f39f248aa","seq":6,"status":"ok","tick":5,"tool_call_id":"call-m-slow","type":"call_end"}
+{"batch_id":"matrix-threaded-out-of-order-in-flight","cancelled":0,"collection_closed_tick":null,"completed":3,"failed":0,"late_results_reconciled":0,"refused":0,"seq":7,"status":"ok","tick":5,"type":"batch_end","values_lost":0}

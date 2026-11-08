@@ -1,0 +1,13 @@
+== matrix cell: shell/timeout/at-completion (naive) ==
+completion_order: call-sh-b,call-sh-c,call-sh-a
+issued: 3
+preserved: 3
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+status: ok
+events: 8
+trace_sha256: dd83207141d0e57c46b0fb4fba1819944b3047491086672c42346995e104fee1
+trace_file: outputs/run1/matrix/shell-timeout-at-completion-naive/cell.trace.jsonl
+cell shell/timeout/at-completion: DONE
