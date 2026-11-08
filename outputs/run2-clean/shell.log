@@ -1,0 +1,17 @@
+== scenario: shell parallel runner ==
+batch: batch-shell
+completion_order: call-sh-2,call-sh-4,call-sh-3,call-sh-1
+PASS: completion order matches the manifest
+PASS: call-sh-1 exit code 0
+PASS: call-sh-1 output digest matches
+PASS: call-sh-2 exit code 0
+PASS: call-sh-2 output digest matches
+PASS: call-sh-3 exit code 0
+PASS: call-sh-3 output digest matches
+PASS: call-sh-4 exit code 3
+PASS: call-sh-4 output digest matches
+status: partial_failure
+events: 10
+trace_sha256: cd7a310e56bd06be839c84ede976949430880a8131ef8d8e663eea68ae5da882
+trace_file: outputs/run1/shell/batch-shell.trace.jsonl
+scenario shell: ALL PASS

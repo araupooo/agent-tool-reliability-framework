@@ -1,0 +1,19 @@
+== probe: live ThreadPoolExecutor semantics ==
+task-1 running: True
+task-2 running: False
+cancel queued task-2: True
+cancel running task-1: False
+wait(timeout=0.05) done_count: 0 not_done_count: 1
+wait(timeout=0.05) task-1 done: False
+task-2 cancelled: True
+task-1 result after wait: task-1: done
+task-3 result (ran after task-1): task-3: done
+shutdown(cancel_futures=True): running task-a result: task-a: done
+shutdown(cancel_futures=True): queued task-b cancelled: True
+PASS: cancel() on a queued future returns True
+PASS: cancel() on a running future returns False
+PASS: wait(timeout) did not cancel the running task; it completed
+PASS: queued task stayed cancelled
+PASS: shutdown(cancel_futures=True) cancels a queued future
+PASS: shutdown(cancel_futures=True) does not stop a running future
+probe live ThreadPoolExecutor: ALL PASS

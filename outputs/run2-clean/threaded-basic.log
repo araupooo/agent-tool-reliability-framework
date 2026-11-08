@@ -1,0 +1,11 @@
+== scenario: threaded basic (thread-pool dispatcher) ==
+batch: batch-threaded-basic
+status: ok
+end_tick: 4
+trace_sha256: 9d158d043ab677fabd7e519d650b658646de8fec7912b6afcaae0da881384092
+PASS: two calls queue while both workers are busy -- count=2
+PASS: completion order is fast, then first, then queued calls in FIFO order -- call-t-2,call-t-1,call-t-4,call-t-3
+PASS: all 4 results preserved, zero drops
+PASS: batch ends at tick 4 -- end_tick=4
+PASS: replay is byte-identical to the recorded trace
+scenario threaded basic: ALL PASS

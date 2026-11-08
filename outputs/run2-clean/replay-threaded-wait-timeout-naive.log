@@ -1,0 +1,6 @@
+batch: batch-threaded-wait-timeout
+replay_status: partial_failure
+replay_end_tick: 10
+replay_events: 8
+replay_trace_sha256: 5b6d178eaf978b663521088ff5c97bb3688dc58a73ac6e9a629c43fd79c0c41e
+replay: MATCH (byte-identical)

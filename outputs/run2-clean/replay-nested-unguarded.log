@@ -1,0 +1,6 @@
+batch: batch-nested
+replay_status: ok
+replay_end_tick: 6
+replay_events: 8
+replay_trace_sha256: 0a39af566402a6fae9e3220a6fb546a95f9a5a59949475400ccc00eeeb43b464
+replay: MATCH (byte-identical)

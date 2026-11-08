@@ -1,0 +1,19 @@
+== scenario: threaded timeout (thread-pool dispatcher) ==
+batch: batch-threaded-timeout
+status: partial_failure
+end_tick: 9
+trace_sha256: 13284457b106e05b0a428f86c05ff28cc9d068e0e80361fa77ea512df6fa9671
+PASS: exactly one timeout, for the slow call -- count=1
+PASS: timeout fires at the 5-tick deadline -- tick=5
+PASS: batch status is partial_failure -- partial_failure
+PASS: batch ends at tick 9, on the siblings' schedule -- end_tick=9
+PASS: sibling read_file completes
+PASS: sibling compute_hash completes
+PASS: slow call reported as timeout
+PASS: one result reported per call issued -- 3/3
+PASS: replay is byte-identical to the recorded trace
+naive (no deadline) end_tick: 20
+PASS: naive run: batch held to tick 20 by the slow call
+PASS: naive run: slow call runs to completion
+PASS: naive run: no timeout event
+scenario threaded timeout: ALL PASS

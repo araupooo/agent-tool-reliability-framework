@@ -1,0 +1,19 @@
+== scenario: threaded wait timeout (collector stops at tick 4) ==
+batch: batch-threaded-wait-timeout
+status: ok
+end_tick: 10
+trace_sha256: b43b3d79ad3a5021e28b659bf5b313b936e83408fee4fb3a92fd0034a9dbb075
+PASS: both running calls time out for the collector at tick 4 -- count=2
+PASS: collector timeout fires at tick 4
+PASS: both calls complete late and are reconciled -- count=2
+PASS: late results arrive at ticks 8 and 10
+PASS: both late results reconciled
+PASS: both result values preserved, none lost
+PASS: reconciled result is flagged late
+PASS: replay is byte-identical to the recorded trace
+naive (discard late results) preserved: 0/2
+PASS: naive run: no result value is preserved
+PASS: naive run: both late result values are lost
+PASS: naive run: batch ends partial_failure
+PASS: naive run: late completions are still observed, but discarded
+scenario threaded wait timeout: ALL PASS
