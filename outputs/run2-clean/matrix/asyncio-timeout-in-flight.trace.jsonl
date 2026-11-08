@@ -1,0 +1,8 @@
+{"batch_id":"matrix-asyncio-timeout-in-flight","call_ids":["call-m-slow","call-m-read","call-m-hash"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"7a02e8f4d45bd7ebcd634c41f0884f572f36a93db7934b0b7e7d4ff7633b4dc8","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"slow_query","tool_call_id":"call-m-slow","type":"call_start"}
+{"args_digest":"3e7ca063d3ea962c0986eddbe69d0fc3a1794cf6921e5d824a0a3df79b088890","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"read_file","tool_call_id":"call-m-read","type":"call_start"}
+{"args_digest":"466e5595ae5bbe8f0f43c093b522ac4a95bceca2cd374c852c00fd627b4f09e6","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"compute_hash","tool_call_id":"call-m-hash","type":"call_start"}
+{"parent_tool_call_id":null,"result_digest":"f6511d99038afce290a2c8733b6c934848a8a4ba11568904b91430f6f720ce96","seq":4,"status":"ok","tick":3,"tool_call_id":"call-m-read","type":"call_end"}
+{"deadline_ticks":5,"seq":5,"status":"timeout","tick":5,"tool_call_id":"call-m-slow","type":"call_timeout"}
+{"parent_tool_call_id":null,"result_digest":"78ff1bf545102604fe8f7d491753db5e301e882b1b96daf93c9b500311ea187d","seq":6,"status":"ok","tick":6,"tool_call_id":"call-m-hash","type":"call_end"}
+{"batch_id":"matrix-asyncio-timeout-in-flight","cancelled":0,"completed":2,"failed":1,"refused":0,"seq":7,"status":"partial_failure","tick":6,"type":"batch_end"}

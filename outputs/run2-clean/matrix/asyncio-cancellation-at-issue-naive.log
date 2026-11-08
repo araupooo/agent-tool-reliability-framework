@@ -1,0 +1,13 @@
+== matrix cell (naive): asyncio/cancellation/at-issue ==
+batch: matrix-asyncio-cancellation-at-issue
+status: ok
+end_tick: 0
+events: 5
+issued: 3
+preserved: 0
+errored: 0
+dropped: 3
+values_lost: 0
+position_misattributed: 0
+completion_order: 
+trace_sha256: ab365f5771a30f5241950053ce77ed23a5b2601493ca5990ab798456a8fa8c53

@@ -1,0 +1,13 @@
+== matrix cell (naive): asyncio/cancellation/in-flight ==
+batch: matrix-asyncio-cancellation-in-flight
+status: ok
+end_tick: 4
+events: 6
+issued: 3
+preserved: 1
+errored: 0
+dropped: 2
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-quick
+trace_sha256: 7cd04ca111418f5ee4170e9ae1bd2509561568c6da6f7da05dc656e42a15bd6e

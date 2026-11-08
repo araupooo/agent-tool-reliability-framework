@@ -1,0 +1,13 @@
+== matrix cell (naive): asyncio/out-of-order/at-issue ==
+batch: matrix-asyncio-out-of-order-at-issue
+status: ok
+end_tick: 5
+events: 8
+issued: 3
+preserved: 3
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-fast,call-m-mid,call-m-slow
+trace_sha256: 639c5e316aedeb3be83e06355eec7bdf0e6bbee926552a718fe5c09095427c98
