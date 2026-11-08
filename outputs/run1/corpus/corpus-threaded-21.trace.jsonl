@@ -1,0 +1,9 @@
+{"batch_id":"corpus-threaded-21","call_ids":["call-c1","call-c2"],"max_workers":3,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"slow_query","tool_call_id":"call-c1","type":"call_start","worker_slot":0}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"slow_query","tool_call_id":"call-c2","type":"call_start","worker_slot":1}
+{"parent_tool_call_id":null,"result_digest":"785bbad2cbe71599c508601762bfc7efd7d06f52c3ee290dfbd9dfbfc61eb448","seq":3,"status":"ok","tick":2,"tool_call_id":"call-c1","type":"call_end"}
+{"reason":"collector wait() timed out; work continues","seq":4,"status":"timeout","tick":4,"tool_call_id":"call-c2","type":"call_timeout"}
+{"reason":"Future.cancel() returns False for a running call","seq":5,"status":"running","tick":5,"tool_call_id":"call-c2","type":"cancel_rejected"}
+{"collection_closed_tick":4,"result_digest":"56602a2b51995d0f6bd9e2f9b2d23942fb9bfefba608f66bd0af0b5072864f9f","seq":6,"status":"ok","tick":9,"tool_call_id":"call-c2","type":"call_late_result"}
+{"parent_tool_call_id":null,"result_digest":"56602a2b51995d0f6bd9e2f9b2d23942fb9bfefba608f66bd0af0b5072864f9f","seq":7,"status":"ok","tick":9,"tool_call_id":"call-c2","type":"call_end"}
+{"batch_id":"corpus-threaded-21","cancelled":0,"collection_closed_tick":4,"completed":2,"failed":0,"late_results_reconciled":1,"refused":0,"seq":8,"status":"ok","tick":9,"type":"batch_end","values_lost":0}
