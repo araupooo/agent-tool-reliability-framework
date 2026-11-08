@@ -1,0 +1,14 @@
+{"batch_id":"corpus-asyncio-14","call_ids":["call-c1","call-c2","call-c3","call-c4","call-c5","call-c6"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"fetch_url","tool_call_id":"call-c1","type":"call_start"}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"read_file","tool_call_id":"call-c2","type":"call_start"}
+{"args_digest":"0bb3d42fac472151177c75096928bfc5a03f8967a33152196067f148c332ebb2","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"read_file","tool_call_id":"call-c3","type":"call_start"}
+{"args_digest":"3642dfa872320fc3db17f95a04ad6889f66dfba7fef83ae598a342ec1a121ecc","parent_tool_call_id":null,"seq":4,"tick":0,"tool":"slow_query","tool_call_id":"call-c4","type":"call_start"}
+{"args_digest":"bcadfe9ee38e9238b61381cb47af7ba99a495d5be4dc379270a5fe66a634e79c","parent_tool_call_id":null,"seq":5,"tick":0,"tool":"slow_query","tool_call_id":"call-c5","type":"call_start"}
+{"args_digest":"311762a9e360b8d32686a64665dfb7afa27ddc32c4c3d75b8d4640cd003ee695","parent_tool_call_id":null,"seq":6,"tick":0,"tool":"long_task","tool_call_id":"call-c6","type":"call_start"}
+{"parent_tool_call_id":null,"result_digest":"f8a69aacdcd63490191b975eb2dad1fda305e30e1c5062ea62213ce8f2409622","seq":7,"status":"ok","tick":1,"tool_call_id":"call-c5","type":"call_end"}
+{"deadline_ticks":5,"seq":8,"status":"timeout","tick":5,"tool_call_id":"call-c1","type":"call_timeout"}
+{"parent_tool_call_id":null,"result_digest":"4f7f7c968165476835c82353be2199998896dd40398cb7ee39a27c659db51005","seq":9,"status":"ok","tick":5,"tool_call_id":"call-c6","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"e8a6a19a84c940372aa72af5f8ad03b1649152237e28201284b016cab34aac6c","seq":10,"status":"ok","tick":6,"tool_call_id":"call-c4","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"0618e60171427d0e0293680fa6ac032f1c812d1da31398abfd4a9b0497df032b","seq":11,"status":"ok","tick":9,"tool_call_id":"call-c3","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"ef7bdc9aaba67182ef4f525158847d6c24a65c09463ecb53021ba5e0c3a5ca6f","seq":12,"status":"ok","tick":11,"tool_call_id":"call-c2","type":"call_end"}
+{"batch_id":"corpus-asyncio-14","cancelled":0,"completed":5,"failed":1,"refused":0,"seq":13,"status":"partial_failure","tick":11,"type":"batch_end"}

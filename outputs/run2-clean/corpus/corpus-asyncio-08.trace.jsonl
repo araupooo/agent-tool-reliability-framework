@@ -1,0 +1,10 @@
+{"batch_id":"corpus-asyncio-08","call_ids":["call-c1","call-c2","call-c3","call-c4"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"long_task","tool_call_id":"call-c1","type":"call_start"}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"fetch_url","tool_call_id":"call-c2","type":"call_start"}
+{"args_digest":"0bb3d42fac472151177c75096928bfc5a03f8967a33152196067f148c332ebb2","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"slow_query","tool_call_id":"call-c3","type":"call_start"}
+{"args_digest":"3642dfa872320fc3db17f95a04ad6889f66dfba7fef83ae598a342ec1a121ecc","parent_tool_call_id":null,"seq":4,"tick":0,"tool":"read_file","tool_call_id":"call-c4","type":"call_start"}
+{"deadline_ticks":4,"seq":5,"status":"timeout","tick":4,"tool_call_id":"call-c2","type":"call_timeout"}
+{"parent_tool_call_id":null,"result_digest":"043c198893a89e718b15ef8d051d5d9508b2978ebaea2e0b78116aa891c01abe","seq":6,"status":"ok","tick":7,"tool_call_id":"call-c3","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"f39f19a3d6164c16c9fae345fd4fb9893a25d60df1bb9efc3fa4a1503ab6506a","seq":7,"status":"ok","tick":8,"tool_call_id":"call-c1","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"12c9f63a9e04dcff5eb275a87cebb5703e83eee6b63ae9b910c5fdf25f2ae5f4","seq":8,"status":"ok","tick":10,"tool_call_id":"call-c4","type":"call_end"}
+{"batch_id":"corpus-asyncio-08","cancelled":0,"completed":3,"failed":1,"refused":0,"seq":9,"status":"partial_failure","tick":10,"type":"batch_end"}

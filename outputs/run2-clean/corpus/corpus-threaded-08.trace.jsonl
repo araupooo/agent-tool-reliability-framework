@@ -1,0 +1,12 @@
+{"batch_id":"corpus-threaded-08","call_ids":["call-c1","call-c2","call-c3","call-c4"],"max_workers":2,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"slow_query","tool_call_id":"call-c1","type":"call_start","worker_slot":0}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"long_task","tool_call_id":"call-c2","type":"call_start","worker_slot":1}
+{"queue_position":0,"seq":3,"tick":0,"tool":"compute_hash","tool_call_id":"call-c3","type":"call_queued"}
+{"queue_position":1,"seq":4,"tick":0,"tool":"long_task","tool_call_id":"call-c4","type":"call_queued"}
+{"parent_tool_call_id":null,"result_digest":"785bbad2cbe71599c508601762bfc7efd7d06f52c3ee290dfbd9dfbfc61eb448","seq":5,"status":"ok","tick":6,"tool_call_id":"call-c1","type":"call_end"}
+{"args_digest":"0bb3d42fac472151177c75096928bfc5a03f8967a33152196067f148c332ebb2","parent_tool_call_id":null,"seq":6,"tick":6,"tool":"compute_hash","tool_call_id":"call-c3","type":"call_start","worker_slot":1}
+{"parent_tool_call_id":null,"result_digest":"44961e825332945b32c87534a8f42c2df0ca1e6bf68cc40d0df92aa8052af2b1","seq":7,"status":"ok","tick":7,"tool_call_id":"call-c3","type":"call_end"}
+{"args_digest":"3642dfa872320fc3db17f95a04ad6889f66dfba7fef83ae598a342ec1a121ecc","parent_tool_call_id":null,"seq":8,"tick":7,"tool":"long_task","tool_call_id":"call-c4","type":"call_start","worker_slot":1}
+{"parent_tool_call_id":null,"result_digest":"81c9aac2838e77518b897621f0cb5270d8f31f69b3cc4eed87e7f7b5b204cf2a","seq":9,"status":"ok","tick":9,"tool_call_id":"call-c2","type":"call_end"}
+{"deadline_ticks":6,"seq":10,"status":"timeout","tick":13,"tool_call_id":"call-c4","type":"call_timeout"}
+{"batch_id":"corpus-threaded-08","cancelled":0,"collection_closed_tick":null,"completed":3,"failed":1,"late_results_reconciled":0,"refused":0,"seq":11,"status":"partial_failure","tick":13,"type":"batch_end","values_lost":0}

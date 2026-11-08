@@ -1,0 +1,14 @@
+{"batch_id":"corpus-threaded-03","call_ids":["call-c1","call-c2","call-c3","call-c4"],"max_workers":3,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"compute_hash","tool_call_id":"call-c1","type":"call_start","worker_slot":0}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"fetch_url","tool_call_id":"call-c2","type":"call_start","worker_slot":1}
+{"args_digest":"0bb3d42fac472151177c75096928bfc5a03f8967a33152196067f148c332ebb2","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"fetch_url","tool_call_id":"call-c3","type":"call_start","worker_slot":2}
+{"queue_position":0,"seq":4,"tick":0,"tool":"read_file","tool_call_id":"call-c4","type":"call_queued"}
+{"parent_tool_call_id":null,"result_digest":"e2d4fbea8340fd104c5180b83bc229184a46375b96e12b6ab7588021bfc3fe6f","seq":5,"status":"ok","tick":2,"tool_call_id":"call-c2","type":"call_end"}
+{"args_digest":"3642dfa872320fc3db17f95a04ad6889f66dfba7fef83ae598a342ec1a121ecc","parent_tool_call_id":null,"seq":6,"tick":2,"tool":"read_file","tool_call_id":"call-c4","type":"call_start","worker_slot":2}
+{"parent_tool_call_id":null,"result_digest":"770da00b6742f6a0669c46fb3ba8cc445898dedfdc32f6bca821675813dfc2c6","seq":7,"status":"ok","tick":2,"tool_call_id":"call-c3","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"047a358cc0af0c578fc422e27388d9382d310368bf99b95b17a61b83a5247664","seq":8,"status":"ok","tick":4,"tool_call_id":"call-c1","type":"call_end"}
+{"reason":"collector wait() timed out; work continues","seq":9,"status":"timeout","tick":4,"tool_call_id":"call-c4","type":"call_timeout"}
+{"reason":"Future.cancel() returns False for a running call","seq":10,"status":"running","tick":6,"tool_call_id":"call-c4","type":"cancel_rejected"}
+{"collection_closed_tick":4,"result_digest":"12c9f63a9e04dcff5eb275a87cebb5703e83eee6b63ae9b910c5fdf25f2ae5f4","seq":11,"status":"ok","tick":14,"tool_call_id":"call-c4","type":"call_late_result"}
+{"parent_tool_call_id":null,"result_digest":"12c9f63a9e04dcff5eb275a87cebb5703e83eee6b63ae9b910c5fdf25f2ae5f4","seq":12,"status":"ok","tick":14,"tool_call_id":"call-c4","type":"call_end"}
+{"batch_id":"corpus-threaded-03","cancelled":0,"collection_closed_tick":4,"completed":4,"failed":0,"late_results_reconciled":1,"refused":0,"seq":13,"status":"ok","tick":14,"type":"batch_end","values_lost":0}

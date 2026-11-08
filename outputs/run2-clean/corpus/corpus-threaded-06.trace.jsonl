@@ -1,0 +1,6 @@
+{"batch_id":"corpus-threaded-06","call_ids":["call-c1","call-c2"],"max_workers":3,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"fetch_url","tool_call_id":"call-c1","type":"call_start","worker_slot":0}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"long_task","tool_call_id":"call-c2","type":"call_start","worker_slot":1}
+{"error":"upstream 503: service unavailable","is_error":true,"seq":3,"status":"error","tick":3,"tool_call_id":"call-c1","type":"call_error"}
+{"deadline_ticks":6,"seq":4,"status":"timeout","tick":6,"tool_call_id":"call-c2","type":"call_timeout"}
+{"batch_id":"corpus-threaded-06","cancelled":0,"collection_closed_tick":null,"completed":0,"failed":2,"late_results_reconciled":0,"refused":0,"seq":5,"status":"partial_failure","tick":6,"type":"batch_end","values_lost":0}
