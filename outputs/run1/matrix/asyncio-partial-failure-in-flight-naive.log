@@ -1,0 +1,13 @@
+== matrix cell (naive): asyncio/partial-failure/in-flight ==
+batch: matrix-asyncio-partial-failure-in-flight
+status: aborted
+end_tick: 3
+events: 8
+issued: 3
+preserved: 1
+errored: 0
+dropped: 2
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-ok-a
+trace_sha256: b3d8e5f04224edef21f39347afcb73d9fd04aa5f87584ec079a70bb939f5112a

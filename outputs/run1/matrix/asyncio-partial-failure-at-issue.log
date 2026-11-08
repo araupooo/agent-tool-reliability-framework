@@ -1,0 +1,13 @@
+== matrix cell: asyncio/partial-failure/at-issue ==
+batch: matrix-asyncio-partial-failure-at-issue
+status: partial_failure
+end_tick: 4
+events: 8
+issued: 3
+preserved: 2
+errored: 1
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-fail-b,call-m-ok-a,call-m-ok-c
+trace_sha256: 146930a51c42b99ce954f24432ac03d302d7e0e3e39160be1fd1998ad734a0e4

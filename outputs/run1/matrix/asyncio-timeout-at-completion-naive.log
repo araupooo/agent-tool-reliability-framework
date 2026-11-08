@@ -1,0 +1,13 @@
+== matrix cell (naive): asyncio/timeout/at-completion ==
+batch: matrix-asyncio-timeout-at-completion
+status: ok
+end_tick: 20
+events: 8
+issued: 3
+preserved: 3
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-read,call-m-hash,call-m-slow
+trace_sha256: 8309a543152855c040bc5cacbf9485d60daf3ee3b9e3a15e9a2702c4714e1a83

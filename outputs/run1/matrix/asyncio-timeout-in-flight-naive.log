@@ -1,0 +1,13 @@
+== matrix cell (naive): asyncio/timeout/in-flight ==
+batch: matrix-asyncio-timeout-in-flight
+status: ok
+end_tick: 20
+events: 8
+issued: 3
+preserved: 3
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-read,call-m-hash,call-m-slow
+trace_sha256: 9d2a77da3f4a0d056ce497d9f33dc14b913929f16c35cbc9162a79f5ce6f4977

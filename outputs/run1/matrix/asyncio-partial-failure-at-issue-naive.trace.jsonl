@@ -1,0 +1,7 @@
+{"batch_id":"matrix-asyncio-partial-failure-at-issue","call_ids":["call-m-ok-a","call-m-fail-b","call-m-ok-c"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"a92980ae29d0e7c71af7c529fb56a1679ce1a657059a0165a21833c2d9c9bba6","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"read_file","tool_call_id":"call-m-ok-a","type":"call_start"}
+{"args_digest":"b16fd3f0cb024fbfd66d41c71cf3ce739a0e84135a938ab6aeccc63c479d26e3","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"fetch_url","tool_call_id":"call-m-fail-b","type":"call_start"}
+{"error":"upstream 503: service unavailable","is_error":true,"seq":3,"status":"error","tick":0,"tool_call_id":"call-m-fail-b","type":"call_error"}
+{"args_digest":"f6e35dc3f5f0e2dc5d488128c5bf3ccf928fc3d31ab37fe876863b5337b5bd87","parent_tool_call_id":null,"seq":4,"tick":0,"tool":"compute_hash","tool_call_id":"call-m-ok-c","type":"call_start"}
+{"batch_id":"matrix-asyncio-partial-failure-at-issue","error":"upstream 503: service unavailable","failed_tool_call_id":"call-m-fail-b","seq":5,"status":"aborted","tick":0,"type":"batch_aborted"}
+{"batch_id":"matrix-asyncio-partial-failure-at-issue","cancelled":0,"completed":0,"failed":0,"refused":0,"seq":6,"status":"aborted","tick":0,"type":"batch_end"}
