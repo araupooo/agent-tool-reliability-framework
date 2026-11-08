@@ -1,0 +1,6 @@
+{"batch_id":"shell/cancellation/at-issue","call_ids":["call-sh-a","call-sh-b","call-sh-c"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"f44e64e75f3948e9f73f8dfa94721c4ce8cbb4f265c4790c702b2d41cfbf2753","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"shell","tool_call_id":"call-sh-b","type":"call_start"}
+{"args_digest":"be9d587defa1f0c09ef49eb17e206983a5f8f8289e4281860bd0ee5a19592c67","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"shell","tool_call_id":"call-sh-c","type":"call_start"}
+{"result_digest":"f2c82decdd7181cf98945929a62598db7e6b477e11f6e0eb0ae97020eff151ad","seq":3,"status":"ok","tick":0,"tool_call_id":"call-sh-b","type":"call_end"}
+{"result_digest":"ae9a6306a205417afddd14316cc1d0d5e04a98f1be10865dce643925ee070ce2","seq":4,"status":"ok","tick":1,"tool_call_id":"call-sh-c","type":"call_end"}
+{"batch_id":"shell/cancellation/at-issue","cancelled":0,"completed":2,"failed":0,"refused":0,"seq":5,"status":"ok","tick":1,"type":"batch_end"}
