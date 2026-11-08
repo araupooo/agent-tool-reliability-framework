@@ -1,0 +1,10 @@
+{"batch_id":"batch-shell","call_ids":["call-sh-1","call-sh-2","call-sh-3","call-sh-4"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"a0f975a450ae78d3bd5536636bb581dd939dca5e09cd7e200848b275e403ca55","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"shell","tool_call_id":"call-sh-1","type":"call_start"}
+{"args_digest":"e41fa42c1e5696825d48482decdfd9a32b18a1646636d06cd610ff44c3ad8781","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"shell","tool_call_id":"call-sh-2","type":"call_start"}
+{"args_digest":"4115ef1fa38a6b05c44e29876fe756e87ef48b69373d16247264bf2eefe339c5","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"shell","tool_call_id":"call-sh-3","type":"call_start"}
+{"args_digest":"14442a161156d0f8ecea24265251beef94cb984bbe597fc2d6608dbf6f046929","parent_tool_call_id":null,"seq":4,"tick":0,"tool":"shell","tool_call_id":"call-sh-4","type":"call_start"}
+{"result_digest":"f2c82decdd7181cf98945929a62598db7e6b477e11f6e0eb0ae97020eff151ad","seq":5,"status":"ok","tick":0,"tool_call_id":"call-sh-2","type":"call_end"}
+{"error":"exit code 3","is_error":true,"seq":6,"status":"error","tick":1,"tool_call_id":"call-sh-4","type":"call_error"}
+{"result_digest":"ae9a6306a205417afddd14316cc1d0d5e04a98f1be10865dce643925ee070ce2","seq":7,"status":"ok","tick":2,"tool_call_id":"call-sh-3","type":"call_end"}
+{"result_digest":"b6a98d9ce9a2d9149288fa3df42d377c3e42737afdcdaf714e33c0a100b51060","seq":8,"status":"ok","tick":3,"tool_call_id":"call-sh-1","type":"call_end"}
+{"batch_id":"batch-shell","cancelled":0,"completed":3,"failed":1,"refused":0,"seq":9,"status":"partial_failure","tick":3,"type":"batch_end"}
