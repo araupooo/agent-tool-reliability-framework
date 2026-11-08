@@ -1,0 +1,13 @@
+== matrix cell (naive): threaded/timeout/in-flight ==
+batch: matrix-threaded-timeout-in-flight
+status: ok
+end_tick: 20
+events: 9
+issued: 3
+preserved: 3
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-read,call-m-hash,call-m-slow
+trace_sha256: c7a0f0585bd6cf7aab5d9b52289c4ddaba6db76a71b658d218956b97b1480f36
