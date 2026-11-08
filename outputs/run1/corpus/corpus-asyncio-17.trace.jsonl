@@ -1,0 +1,8 @@
+{"batch_id":"corpus-asyncio-17","call_ids":["call-c1","call-c2","call-c3"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"fetch_url","tool_call_id":"call-c1","type":"call_start"}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"long_task","tool_call_id":"call-c2","type":"call_start"}
+{"args_digest":"0bb3d42fac472151177c75096928bfc5a03f8967a33152196067f148c332ebb2","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"fetch_url","tool_call_id":"call-c3","type":"call_start"}
+{"parent_tool_call_id":null,"result_digest":"770da00b6742f6a0669c46fb3ba8cc445898dedfdc32f6bca821675813dfc2c6","seq":4,"status":"ok","tick":1,"tool_call_id":"call-c3","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"ee2b4cb4117706dc34e968ff62bfb538711023f510bd77e09a1b6e2e513ab605","seq":5,"status":"ok","tick":12,"tool_call_id":"call-c1","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"81c9aac2838e77518b897621f0cb5270d8f31f69b3cc4eed87e7f7b5b204cf2a","seq":6,"status":"ok","tick":12,"tool_call_id":"call-c2","type":"call_end"}
+{"batch_id":"corpus-asyncio-17","cancelled":0,"completed":3,"failed":0,"refused":0,"seq":7,"status":"ok","tick":12,"type":"batch_end"}

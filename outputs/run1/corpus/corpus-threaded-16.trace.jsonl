@@ -1,0 +1,7 @@
+{"batch_id":"corpus-threaded-16","call_ids":["call-c1","call-c2"],"max_workers":1,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"fetch_url","tool_call_id":"call-c1","type":"call_start","worker_slot":0}
+{"queue_position":0,"seq":2,"tick":0,"tool":"fetch_url","tool_call_id":"call-c2","type":"call_queued"}
+{"parent_tool_call_id":null,"result_digest":"ee2b4cb4117706dc34e968ff62bfb538711023f510bd77e09a1b6e2e513ab605","seq":3,"status":"ok","tick":2,"tool_call_id":"call-c1","type":"call_end"}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":4,"tick":2,"tool":"fetch_url","tool_call_id":"call-c2","type":"call_start","worker_slot":0}
+{"error":"upstream 503: service unavailable","is_error":true,"seq":5,"status":"error","tick":12,"tool_call_id":"call-c2","type":"call_error"}
+{"batch_id":"corpus-threaded-16","cancelled":0,"collection_closed_tick":null,"completed":1,"failed":1,"late_results_reconciled":0,"refused":0,"seq":6,"status":"partial_failure","tick":12,"type":"batch_end","values_lost":0}

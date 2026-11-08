@@ -1,0 +1,8 @@
+{"batch_id":"corpus-asyncio-02","call_ids":["call-c1","call-c2","call-c3"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"slow_query","tool_call_id":"call-c1","type":"call_start"}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"read_file","tool_call_id":"call-c2","type":"call_start"}
+{"args_digest":"0bb3d42fac472151177c75096928bfc5a03f8967a33152196067f148c332ebb2","parent_tool_call_id":null,"seq":3,"tick":0,"tool":"slow_query","tool_call_id":"call-c3","type":"call_start"}
+{"parent_tool_call_id":null,"result_digest":"043c198893a89e718b15ef8d051d5d9508b2978ebaea2e0b78116aa891c01abe","seq":4,"status":"ok","tick":2,"tool_call_id":"call-c3","type":"call_end"}
+{"deadline_ticks":4,"seq":5,"status":"timeout","tick":4,"tool_call_id":"call-c2","type":"call_timeout"}
+{"parent_tool_call_id":null,"result_digest":"785bbad2cbe71599c508601762bfc7efd7d06f52c3ee290dfbd9dfbfc61eb448","seq":6,"status":"ok","tick":9,"tool_call_id":"call-c1","type":"call_end"}
+{"batch_id":"corpus-asyncio-02","cancelled":0,"completed":2,"failed":1,"refused":0,"seq":7,"status":"partial_failure","tick":9,"type":"batch_end"}

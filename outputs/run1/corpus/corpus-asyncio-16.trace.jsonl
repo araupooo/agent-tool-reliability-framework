@@ -1,0 +1,6 @@
+{"batch_id":"corpus-asyncio-16","call_ids":["call-c1","call-c2"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"read_file","tool_call_id":"call-c1","type":"call_start"}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"compute_hash","tool_call_id":"call-c2","type":"call_start"}
+{"error":"upstream 503: service unavailable","is_error":true,"seq":3,"status":"error","tick":1,"tool_call_id":"call-c2","type":"call_error"}
+{"parent_tool_call_id":null,"result_digest":"7066a3c12f61173b864170d95568a1acca4df0b1cc587f84ba5e890ead50c58c","seq":4,"status":"ok","tick":8,"tool_call_id":"call-c1","type":"call_end"}
+{"batch_id":"corpus-asyncio-16","cancelled":0,"completed":1,"failed":1,"refused":0,"seq":5,"status":"partial_failure","tick":8,"type":"batch_end"}

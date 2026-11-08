@@ -1,0 +1,6 @@
+{"batch_id":"corpus-asyncio-21","call_ids":["call-c1","call-c2"],"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"e29f9a55209d1e8e380f2accfa1c263238b9c6401a3188aa5a09f51d388165f1","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"slow_query","tool_call_id":"call-c1","type":"call_start"}
+{"args_digest":"ad28f141a0eb3cf52f06fa30303f61674a1e81ce516f82b279774f885b1e8e70","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"compute_hash","tool_call_id":"call-c2","type":"call_start"}
+{"parent_tool_call_id":null,"result_digest":"785bbad2cbe71599c508601762bfc7efd7d06f52c3ee290dfbd9dfbfc61eb448","seq":3,"status":"ok","tick":1,"tool_call_id":"call-c1","type":"call_end"}
+{"seq":4,"status":"cancelled","tick":3,"tool_call_id":"call-c2","type":"call_cancelled"}
+{"batch_id":"corpus-asyncio-21","cancelled":1,"completed":1,"failed":0,"refused":0,"seq":5,"status":"cancelled","tick":3,"type":"batch_end"}
