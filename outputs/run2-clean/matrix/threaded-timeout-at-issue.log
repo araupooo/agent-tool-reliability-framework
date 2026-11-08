@@ -1,0 +1,13 @@
+== matrix cell: threaded/timeout/at-issue ==
+batch: matrix-threaded-timeout-at-issue
+status: partial_failure
+end_tick: 8
+events: 9
+issued: 3
+preserved: 2
+errored: 1
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-slow,call-m-read,call-m-hash
+trace_sha256: 2617096207a0a8b66696125959fbfd05b800a10dee13e7b54305a609e3d5a918

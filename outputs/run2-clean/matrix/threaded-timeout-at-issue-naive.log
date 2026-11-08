@@ -1,0 +1,13 @@
+== matrix cell (naive): threaded/timeout/at-issue ==
+batch: matrix-threaded-timeout-at-issue
+status: ok
+end_tick: 20
+events: 9
+issued: 3
+preserved: 3
+errored: 0
+dropped: 0
+values_lost: 0
+position_misattributed: 0
+completion_order: call-m-read,call-m-hash,call-m-slow
+trace_sha256: f710db1590e603f9cfae25f35dbc126a79a1692025559164c5df6c9e251f70f1

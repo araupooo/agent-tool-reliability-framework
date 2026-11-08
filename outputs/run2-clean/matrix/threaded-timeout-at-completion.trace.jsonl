@@ -1,0 +1,9 @@
+{"batch_id":"matrix-threaded-timeout-at-completion","call_ids":["call-m-slow","call-m-read","call-m-hash"],"max_workers":2,"seq":0,"tick":0,"type":"batch_start"}
+{"args_digest":"7a02e8f4d45bd7ebcd634c41f0884f572f36a93db7934b0b7e7d4ff7633b4dc8","parent_tool_call_id":null,"seq":1,"tick":0,"tool":"slow_query","tool_call_id":"call-m-slow","type":"call_start","worker_slot":0}
+{"args_digest":"3e7ca063d3ea962c0986eddbe69d0fc3a1794cf6921e5d824a0a3df79b088890","parent_tool_call_id":null,"seq":2,"tick":0,"tool":"read_file","tool_call_id":"call-m-read","type":"call_start","worker_slot":1}
+{"queue_position":0,"seq":3,"tick":0,"tool":"compute_hash","tool_call_id":"call-m-hash","type":"call_queued"}
+{"parent_tool_call_id":null,"result_digest":"f6511d99038afce290a2c8733b6c934848a8a4ba11568904b91430f6f720ce96","seq":4,"status":"ok","tick":3,"tool_call_id":"call-m-read","type":"call_end"}
+{"args_digest":"466e5595ae5bbe8f0f43c093b522ac4a95bceca2cd374c852c00fd627b4f09e6","parent_tool_call_id":null,"seq":5,"tick":3,"tool":"compute_hash","tool_call_id":"call-m-hash","type":"call_start","worker_slot":1}
+{"parent_tool_call_id":null,"result_digest":"78ff1bf545102604fe8f7d491753db5e301e882b1b96daf93c9b500311ea187d","seq":6,"status":"ok","tick":9,"tool_call_id":"call-m-hash","type":"call_end"}
+{"parent_tool_call_id":null,"result_digest":"99cc7e88ba2fc909d899b15201b401a6d0910fbb6eb82e575b6c286b64626920","seq":7,"status":"ok","tick":20,"tool_call_id":"call-m-slow","type":"call_end"}
+{"batch_id":"matrix-threaded-timeout-at-completion","cancelled":0,"collection_closed_tick":null,"completed":3,"failed":0,"late_results_reconciled":0,"refused":0,"seq":8,"status":"ok","tick":20,"type":"batch_end","values_lost":0}
